@@ -1,0 +1,1 @@
+export const SLIDER_INTERVAL = 5000 // 5 secondes 

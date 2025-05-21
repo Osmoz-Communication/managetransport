@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
-  { href: "/missions", key: "nav.missions" },
+  { href: "/nos-missions", key: "nav.missions" },
   { href: "/valeurs", key: "nav.valeurs" },
   { href: "/equipe", key: "nav.equipe" },
   { href: "/contact", key: "nav.contact" },

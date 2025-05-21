@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import SocialIcon from "../SocialIcon";
+import Link from "next/link";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-white border-t border-gray-200 mt-12">
+    <footer className="bg-white border-t border-gray-200">
       <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-12 md:gap-20 px-4 py-10 md:pt-12 md:pb-4 max-w-7xl mx-auto w-full text-center md:text-left">
         {/* Bloc logo + slogan */}
         <div className="flex-1 min-w-[220px] flex flex-col items-center text-center">
@@ -25,12 +26,13 @@ export default function Footer() {
         <div className="flex-1 min-w-[180px] flex flex-col items-center">
           <div className="font-bold text-primary text-xl mb-4">Les pages importantes</div>
           <div className="flex flex-col gap-1 text-base items-center">
-            <a href="/" className="text-gray-900 hover:text-primary transition-colors">Accueil</a>
-            <a href="/solutions" className="text-gray-900 hover:text-primary transition-colors">Nos solutions</a>
-            <a href="/valeurs" className="text-gray-900 hover:text-primary transition-colors">Nos valeurs</a>
-            <a href="/equipe" className="text-gray-900 hover:text-primary transition-colors">Qui sommes-nous</a>
-            <a href="/contact" className="text-gray-900 hover:text-primary transition-colors">Nous rencontrer</a>
-            <a href="/cgv" className="text-gray-900 hover:text-primary transition-colors">Conditions générales de vente</a>
+            <Link href="/" className="text-gray-900 hover:text-primary transition-colors">Accueil</Link>
+            <Link href="/nos-missions" className="text-gray-900 hover:text-primary transition-colors">Nos missions</Link>
+            <Link href="/solutions" className="text-gray-900 hover:text-primary transition-colors">Nos solutions</Link>
+            <Link href="/valeurs" className="text-gray-900 hover:text-primary transition-colors">Nos valeurs</Link>
+            <Link href="/equipe" className="text-gray-900 hover:text-primary transition-colors">Qui sommes-nous</Link>
+            <Link href="/contact" className="text-gray-900 hover:text-primary transition-colors">Nous rencontrer</Link>
+            <Link href="/cgv" className="text-gray-900 hover:text-primary transition-colors">Conditions générales de vente</Link>
           </div>
         </div>
         {/* Bloc contacts + social icons */}

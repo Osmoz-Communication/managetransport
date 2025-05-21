@@ -1,19 +1,13 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/utilities";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #4f5fcd;
-}
+  --primary: #5d6ef8;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-geist-sans: sans-serif;
+  --font-geist-mono: monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,10 +17,18 @@
   }
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* Styles pour les liens de navigation */
@@ -38,7 +40,7 @@ body {
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;

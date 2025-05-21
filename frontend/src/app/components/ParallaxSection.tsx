@@ -1,0 +1,69 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+
+export const ParallaxSection = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
+
+  return (
+    <section ref={ref} className="relative h-[100vh] overflow-hidden flex flex-col justify-end">
+      {/* Parallaxe background */}
+      <motion.div
+        style={{ y, opacity }}
+        className="absolute inset-0 w-full h-[120%]"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
+          alt="Paysage montagneux"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Titre et sous-titre */}
+      <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center drop-shadow-lg">Atteignez vos objectifs</h2>
+        <p className="text-lg md:text-2xl text-white mb-10 text-center drop-shadow">Nous serons votre bras droit pour vous aider à atteindre les sommets dont vous rêvez...</p>
+      </div>
+
+      {/* Cartes */}
+      <div className="relative z-20 flex flex-col md:flex-row justify-center items-stretch gap-0 md:gap-0 w-full max-w-6xl mx-auto -mb-24">
+        {/* Carte 1 */}
+        <div className="flex-1 bg-[#5d6ef8] p-10 flex flex-col items-start rounded-t-xl md:rounded-l-xl md:rounded-tr-none text-white min-w-[260px]">
+          <div className="mb-4">
+            <Image src="/icons/clock.png" alt="Disponibilités" width={48} height={48} />
+          </div>
+          <div className="font-bold text-2xl mb-2">Disponibilités</div>
+          <div className="mb-2 text-base font-semibold">Du lundi au vendredi</div>
+          <div className="mb-1">8h30 - 12h30</div>
+          <div className="mb-4">13h30 - 18h30</div>
+          <a href="#" className="mt-auto underline font-semibold flex items-center gap-1">En savoir plus <span>›</span></a>
+        </div>
+        {/* Carte 2 */}
+        <div className="flex-1 bg-[#4a6cf7] p-10 flex flex-col items-start text-white min-w-[260px]">
+          <div className="mb-4">
+            <Image src="/icons/phone.png" alt="Téléphone" width={48} height={48} />
+          </div>
+          <div className="font-bold text-2xl mb-2">Appelez-nous...</div>
+          <div className="mb-2 text-2xl font-bold">+33 6 43 32 88 74</div>
+          <div className="mb-4">Pour toute question ou toute demande, n'hésitez pas !</div>
+          <a href="#" className="mt-auto underline font-semibold flex items-center gap-1">Nous contacter <span>›</span></a>
+        </div>
+        {/* Carte 3 */}
+        <div className="flex-1 bg-[#53b6e8] p-10 flex flex-col items-center justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none text-white min-w-[260px]">
+          <div className="mb-4">
+            <Image src="/icons/mail.png" alt="E-mail" width={48} height={48} />
+          </div>
+          <div className="font-bold text-2xl mb-2 text-center">...ou envoyez-nous un<br className="hidden md:block"/> e-mail !</div>
+        </div>
+      </div>
+      <div className="h-32 md:h-24" /> {/* Espace pour ne pas couper les cartes */}
+    </section>
+  );
+}; 
