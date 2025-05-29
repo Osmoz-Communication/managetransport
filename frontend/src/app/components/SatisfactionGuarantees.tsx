@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 const imageVariants = {
@@ -38,32 +37,25 @@ export const SatisfactionGuarantees = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Texte à gauche */}
-        <div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+        <div data-aos="fade-right">
+          <h2
+            data-aos="fade-up"
             className="text-primary text-base font-semibold mb-2"
           >
             À propos
-          </motion.h2>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+          </h2>
+          <h3
+            data-aos="fade-up"
+            data-aos-delay="100"
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-10"
           >
             Vos garanties de satisfaction
-          </motion.h3>
+          </h3>
 
           <div className="flex flex-col gap-8 mb-10">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
               className="flex items-center text-left gap-4"
             >
               <span className="flex-shrink-0">
@@ -73,13 +65,11 @@ export const SatisfactionGuarantees = () => {
                 <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">Un responsable transport en temps partagé</div>
                 <div className="text-gray-600 text-base md:text-lg">Vous bénéficierez de tout notre savoir-faire jusqu&apos;à l&apos;aboutissement de votre projet</div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="300"
               className="flex items-center text-left gap-4"
             >
               <span className="flex-shrink-0">
@@ -89,14 +79,12 @@ export const SatisfactionGuarantees = () => {
                 <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">Une réponse sous 48 heures</div>
                 <div className="text-gray-600 text-base md:text-lg">Chez Manage Transport, nous faisons le nécessaire pour vous répondre sous 2 jours maximum</div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="400"
             className="flex justify-center lg:justify-start"
           >
             <button className="bg-primary text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors text-lg flex items-center gap-2">
@@ -105,27 +93,25 @@ export const SatisfactionGuarantees = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </button>
-          </motion.div>
+          </div>
         </div>
 
         {/* Images à droite avec effet d'apparition */}
-        <motion.div 
+        <div 
+          data-aos="fade-left"
           className="grid grid-cols-2 grid-rows-2 gap-4 h-[420px]"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
           {images.map((img, i) => (
-            <motion.div
+            <div
               key={img.src}
               className={img.className}
-              custom={i}
-              variants={imageVariants}
+              data-aos="zoom-in"
+              data-aos-delay={i * 100}
             >
               <Image src={img.src} alt={img.alt} fill className="object-cover" />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

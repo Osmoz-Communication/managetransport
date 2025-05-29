@@ -72,13 +72,25 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
               priority={index === 0}
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4">
-              <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 text-white text-center">
+              <h1
+                data-aos="fade-down"
+                data-aos-delay="200"
+                className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 text-white text-center"
+              >
                 {slide.title}
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-8 max-w-3xl mx-auto text-white text-center">
+              <p
+                data-aos="fade-up"
+                data-aos-delay="400"
+                className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-8 max-w-3xl mx-auto text-white text-center"
+              >
                 {slide.description}
               </p>
-              <button className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300">
+              <button
+                data-aos="zoom-in"
+                data-aos-delay="600"
+                className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300"
+              >
                 En savoir plus →
               </button>
             </div>

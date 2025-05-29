@@ -30,9 +30,8 @@ export default function Footer() {
             <Link href="/nos-missions" className="text-gray-900 hover:text-primary transition-colors">Nos missions</Link>
             <Link href="/solutions" className="text-gray-900 hover:text-primary transition-colors">Nos solutions</Link>
             <Link href="/valeurs" className="text-gray-900 hover:text-primary transition-colors">Nos valeurs</Link>
-            <Link href="/equipe" className="text-gray-900 hover:text-primary transition-colors">Qui sommes-nous</Link>
+            <Link href="/qui-sommes-nous" className="text-gray-900 hover:text-primary transition-colors">Qui sommes-nous</Link>
             <Link href="/contact" className="text-gray-900 hover:text-primary transition-colors">Nous rencontrer</Link>
-            <Link href="/cgv" className="text-gray-900 hover:text-primary transition-colors">Conditions générales de vente</Link>
           </div>
         </div>
         {/* Bloc contacts + social icons */}

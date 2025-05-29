@@ -1,11 +1,12 @@
 "use client";
 
+import 'aos/dist/aos.css';
 import { Slider } from "./components/Slider";
 import { Advantages } from "./components/Advantages";
 import { SatisfactionGuarantees } from "./components/SatisfactionGuarantees";
 import { ParallaxSection } from "./components/ParallaxSection";
-import { QuoteSection } from "./components/QuoteSection";
 import { MissionsSection } from "./components/MissionsSection";
+import { CTASection } from "./components/CTASection";
 
 export default function Dashboard() {
   const slides = [
@@ -28,12 +29,24 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Slider slides={slides} />
-      <Advantages />
-      <SatisfactionGuarantees />
-      <ParallaxSection />
-      <MissionsSection />
-      <QuoteSection />
+      <div data-aos="fade-down">
+        <Slider slides={slides} />
+      </div>
+      <div data-aos="fade-up">
+        <Advantages />
+      </div>
+      <div data-aos="fade-up">
+        <SatisfactionGuarantees />
+      </div>
+      <div data-aos="zoom-in">
+        <ParallaxSection />
+      </div>
+      <div data-aos="fade-up">
+        <MissionsSection />
+      </div>
+      <div data-aos="fade-up">
+        <CTASection />
+      </div>
     </div>
   );
 }
