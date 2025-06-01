@@ -264,7 +264,7 @@ export default function Contact() {
               {/* Photo */}
               <div className="lg:w-2/5 bg-white flex items-center justify-center p-10">
                 <Image
-                  src="/jc-ravineau.jpg"
+                  src="/photo_JC.jpg"
                   alt="Jean-Claude Ravineau"
                   width={240}
                   height={240}

@@ -27,9 +27,11 @@ export const ParallaxSection = () => {
         style={{ y, opacity }} // Utiliser les transformations de Framer Motion
         className="absolute inset-0 w-full h-[120%] z-0" // Assurer que l'image est derrière le contenu
       >
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
           alt="Paysage montagneux"
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
         />
       </motion.div>

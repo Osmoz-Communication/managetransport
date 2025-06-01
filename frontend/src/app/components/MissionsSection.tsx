@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const missions = [
   {
@@ -48,13 +50,19 @@ export const MissionsSection = () => (
             data-aos-delay={i * 100}
             className="bg-white rounded-2xl shadow p-0 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
-            <img src={mission.img} alt={mission.alt} className="w-full h-40 object-cover" />
+            <Image 
+              src={mission.img} 
+              alt={mission.alt} 
+              width={600}
+              height={400}
+              className="w-full h-40 object-cover" 
+            />
             <div className="p-6 text-center font-medium text-lg">{mission.title}</div>
           </div>
         ))}
       </div>
       <div data-aos="fade-up" data-aos-delay="300" className="flex justify-center">
-        <a href="/nos-missions" className="bg-[#5d6ef8] hover:bg-[#4a6cf7] text-white font-semibold px-8 py-3 rounded-full text-lg shadow transition-colors">En voir plus</a>
+        <Link href="/nos-missions" className="bg-[#5d6ef8] hover:bg-[#4a6cf7] text-white font-semibold px-8 py-3 rounded-full text-lg shadow transition-colors">En voir plus</Link>
       </div>
     </div>
   </section>

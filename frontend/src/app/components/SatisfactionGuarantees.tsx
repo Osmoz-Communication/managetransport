@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const imageVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -102,14 +103,17 @@ export const SatisfactionGuarantees = () => {
           className="grid grid-cols-2 grid-rows-2 gap-4 h-[420px]"
         >
           {images.map((img, i) => (
-            <div
+            <motion.div
               key={img.src}
               className={img.className}
-              data-aos="zoom-in"
-              data-aos-delay={i * 100}
+              variants={imageVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i}
             >
               <Image src={img.src} alt={img.alt} fill className="object-cover" />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

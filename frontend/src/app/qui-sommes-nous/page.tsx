@@ -75,7 +75,7 @@ export default function QuiSommesNous() {
               >
                 <div className="w-80 h-80 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl border-8 border-white">
                   <Image 
-                    src="/jc-ravineau.jpg" 
+                    src="/jc.webp" 
                     alt="Jean-Claude Ravineau" 
                     width={320} 
                     height={320} 
