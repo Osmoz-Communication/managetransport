@@ -3,7 +3,6 @@
 import { useEffect } from "react"
 import { MissionsFullSection } from "./MissionsFullSection"
 import { CTASection } from "../components/CTASection"
-import dynamic from "next/dynamic"
 
 export default function NosMissions() {
   useEffect(() => {
