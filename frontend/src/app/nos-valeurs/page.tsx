@@ -176,7 +176,9 @@ export default function NosValeurs() {
               return (
                 <div
                   key={index}
-                  ref={(el) => (valeursRefs.current[index] = el)}
+                  ref={(el) => {
+                    valeursRefs.current[index] = el;
+                  }}
                   data-index={index}
                   className={`group bg-white rounded-xl p-8 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-700 ${
                     visibleValeurs.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -228,7 +230,9 @@ export default function NosValeurs() {
               {etapes.map((etape, index) => (
                 <div
                   key={index}
-                  ref={(el) => (etapesRefs.current[index] = el)}
+                  ref={(el) => {
+                    etapesRefs.current[index] = el;
+                  }}
                   data-index={index}
                   className={`relative flex items-start ${
                     index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
