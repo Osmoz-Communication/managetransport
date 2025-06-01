@@ -5,8 +5,8 @@ import Link from "next/link";
 const missions = [
   {
     img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
-    alt: "Organisation et gestion d'appels d'offres",
-    title: "Organisation et gestion d'appels d'offres",
+    alt: "Organisation et gestion d&apos;appels d&apos;offres",
+    title: "Organisation et gestion d&apos;appels d&apos;offres",
   },
   {
     img: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80",
@@ -15,13 +15,13 @@ const missions = [
   },
   {
     img: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
-    alt: "Optimisation de votre stratégie d'emballage",
-    title: "Optimisation de votre stratégie d'emballage",
+    alt: "Optimisation de votre stratégie d&apos;emballage",
+    title: "Optimisation de votre stratégie d&apos;emballage",
   },
   {
     img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
-    alt: "Rapport d'enquête de satisfaction de vos clients",
-    title: "Rapport d'enquête de satisfaction de vos clients",
+    alt: "Rapport d&apos;enquête de satisfaction de vos clients",
+    title: "Rapport d&apos;enquête de satisfaction de vos clients",
   },
   {
     img: "https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=600&q=80",
