@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug Frontend",
+      "url": "https://localhost:3000/managetransport/",
+      "webRoot": "${workspaceFolder}/frontend",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/src/*"
+      },
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-user-data",
+      "preLaunchTask": "start-frontend"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Backend",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "--inspect-brk=9229",
+        "${workspaceFolder}/backend/dist/main.js"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}/backend",
+      "console": "integratedTerminal",
+      "restart": true,
+      "autoAttachChildProcesses": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Full Stack",
+      "configurations": ["Debug Frontend", "Debug Backend"]
+    }
+  ]
+}

@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AOSInitializer from "./components/AOSInitializer";
+import { AlertContainer } from "./components/Alert/Alert";
+import { AlertProvider } from "./providers/AlertProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +35,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AOSInitializer />
-        <Header />
-        <main className="min-h-screen bg-white">{children}</main>
-        <Footer />
+        <AlertProvider>
+          <AOSInitializer />
+          <Header />
+          <main className="min-h-screen bg-white">{children}</main>
+          <Footer />
+          <AlertContainer />
+        </AlertProvider>
       </body>
     </html>
   );
