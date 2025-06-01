@@ -1,9 +1,8 @@
 import React from 'react';
 
-interface IconProps extends React.SVGProps<SVGSVGElement> {}
-
-export const SearchIcon: React.FC<IconProps> = (props) => (
+export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <path d="M16.5 16.5L21 21M6 11.5H12M18 11.5C18 15.6421 14.6421 19 10.5 19C6.35786 19 3 15.6421 3 11.5C3 7.35786 6.35786 4 10.5 4C14.6421 4 18 7.35786 18 11.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 ); 

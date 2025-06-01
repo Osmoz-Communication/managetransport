@@ -3,13 +3,15 @@
 import { useEffect } from "react"
 import { MissionsFullSection } from "./MissionsFullSection"
 import { CTASection } from "../components/CTASection"
+import dynamic from "next/dynamic"
 
 export default function NosMissions() {
   useEffect(() => {
     // Réinitialiser AOS si nécessaire
     if (typeof window !== "undefined") {
-      const AOS = require("aos")
-      AOS.refresh()
+      import("aos").then((AOS) => {
+        AOS.default.refresh()
+      })
     }
   }, [])
 

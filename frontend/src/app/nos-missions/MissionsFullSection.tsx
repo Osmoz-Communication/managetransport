@@ -44,11 +44,11 @@ export const MissionsFullSection = () => {
             Nos Expertises
           </div>
           <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Découvrez l'ensemble de nos
+            Découvrez l&apos;ensemble de nos
             <span className="block text-primary">expertises</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Nous vous accompagnons sur tous les aspects de votre logistique et de votre transport, de l'audit à la mise
+            Nous vous accompagnons sur tous les aspects de votre logistique et de votre transport, de l&apos;audit à la mise
             en œuvre opérationnelle.
           </p>
         </div>
