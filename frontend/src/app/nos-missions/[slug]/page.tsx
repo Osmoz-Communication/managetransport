@@ -10,7 +10,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default function MissionPage({ params }: Props) {
+export default async function MissionPage({ params }: Props) {
   const mission = missions.find((m) => m.slug === params.slug);
   if (!mission) return notFound();
 
