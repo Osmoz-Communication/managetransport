@@ -1,9 +1,18 @@
-"use client";
+"use client"
 
-import { MissionsFullSection } from "./MissionsFullSection";
-import { CTASection } from "../components/CTASection";
+import { useEffect } from "react"
+import { MissionsFullSection } from "./MissionsFullSection"
+import { CTASection } from "../components/CTASection"
 
 export default function NosMissions() {
+  useEffect(() => {
+    // Réinitialiser AOS si nécessaire
+    if (typeof window !== "undefined") {
+      const AOS = require("aos")
+      AOS.refresh()
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section professionnel */}
@@ -13,13 +22,13 @@ export default function NosMissions() {
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90"></div>
         </div>
-        
+
         {/* Effets géométriques subtils */}
         <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
         <div className="absolute bottom-10 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
-        
+
         <div className="relative container mx-auto px-4 text-center">
-          <div 
+          <div
             data-aos="fade-up"
             data-aos-delay="100"
             data-aos-offset="0"
@@ -27,8 +36,8 @@ export default function NosMissions() {
           >
             Expertise Transport
           </div>
-          
-          <h1 
+
+          <h1
             data-aos="fade-up"
             data-aos-delay="200"
             data-aos-offset="0"
@@ -36,8 +45,8 @@ export default function NosMissions() {
           >
             Nos Missions
           </h1>
-          
-          <p 
+
+          <p
             data-aos="fade-up"
             data-aos-delay="300"
             data-aos-offset="0"
@@ -50,14 +59,14 @@ export default function NosMissions() {
 
       {/* Section missions */}
       <MissionsFullSection />
-      
+
       {/* Section CTA moderne */}
-      <CTASection 
+      <CTASection
         title="Prêt à optimiser votre logistique ?"
         description="Nos experts analysent vos besoins et vous proposent des solutions sur mesure pour transformer vos défis transport en opportunités."
         secondaryButtonText="Découvrir nos valeurs"
         secondaryButtonHref="/nos-valeurs"
       />
     </div>
-  );
-} 
+  )
+}
