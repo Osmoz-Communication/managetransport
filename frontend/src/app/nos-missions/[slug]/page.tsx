@@ -3,7 +3,14 @@ import { notFound } from "next/navigation";
 import { missions } from "../missionData";
 import { AnimatedMissionDetails } from "@/app/components/AnimatedMissionDetails";
 
-export default function MissionPage({ params }: { params: { slug: string } }) {
+type Props = {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function MissionPage({ params }: Props) {
   const mission = missions.find((m) => m.slug === params.slug);
   if (!mission) return notFound();
 
