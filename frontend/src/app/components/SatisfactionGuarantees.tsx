@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const imageVariants = {
@@ -18,17 +19,17 @@ const imageVariants = {
 export const SatisfactionGuarantees = () => {
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      src: "/images/home/trucks.webp",
       alt: "Route",
       className: "row-span-2 rounded-xl overflow-hidden relative",
     },
     {
-      src: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",
+      src: "/images/home/landscape.webp",
       alt: "Camions",
       className: "rounded-xl overflow-hidden relative",
     },
     {
-      src: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80",
+      src: "/images/home/computer.webp",
       alt: "Bureau",
       className: "rounded-xl overflow-hidden relative",
     },
@@ -88,12 +89,15 @@ export const SatisfactionGuarantees = () => {
             data-aos-delay="400"
             className="flex justify-center lg:justify-start"
           >
-            <button className="bg-primary text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors text-lg flex items-center gap-2">
+            <Link 
+              href="/contact"
+              className="bg-primary text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors text-lg flex items-center gap-2"
+            >
               En savoir plus
               <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 

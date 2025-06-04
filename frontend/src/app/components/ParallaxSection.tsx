@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export const ParallaxSection = () => {
   const ref = useRef(null);
@@ -74,12 +75,12 @@ export const ParallaxSection = () => {
           </div>
           <div className="mb-1">8h30 - 12h30</div>
           <div className="mb-4">13h30 - 18h30</div>
-          <a
-            href="#"
+          <Link
+            href="/contact"
             className="mt-auto underline font-semibold flex items-center gap-1"
           >
             En savoir plus <span>›</span>
-          </a>
+          </Link>
         </div>
         {/* Carte 2 */}
         <div
@@ -100,12 +101,12 @@ export const ParallaxSection = () => {
           <div className="mb-4">
             Pour toute question ou toute demande, n&#39;hésitez pas !
           </div>
-          <a
-            href="#"
+          <Link
+            href="/contact"
             className="mt-auto underline font-semibold flex items-center gap-1"
           >
             Nous contacter <span>›</span>
-          </a>
+          </Link>
         </div>
         {/* Carte 3 */}
         <div
@@ -116,10 +117,13 @@ export const ParallaxSection = () => {
           <div className="mb-4">
             <Image src="/icons/mail.png" alt="E-mail" width={48} height={48} />
           </div>
-          <div className="font-bold text-2xl mb-2 text-center">
+          <Link
+            href="/contact"
+            className="font-bold text-2xl mb-2 text-center cursor-pointer"
+          >
             ...ou envoyez-nous un
             <br className="hidden md:block" /> e-mail !
-          </div>
+          </Link>
         </div>
       </div>
       <div className="h-32 md:h-24" />{" "}

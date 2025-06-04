@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SLIDER_INTERVAL } from "../../constants";
 import { useSlider } from "../hooks/useSlider";
 
@@ -34,8 +35,9 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
 
   return (
     <div className="relative group">
-      <div
-        className="relative h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden select-none"
+      {/* Container principal du slider */}
+      <div 
+        className="relative h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -54,15 +56,9 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out select-none ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               currentSlide === index ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
-            style={{
-              userSelect: "none",
-              WebkitUserSelect: "none",
-              MozUserSelect: "none",
-              msUserSelect: "none",
-            }}
           >
             <Image
               src={slide.image}
@@ -70,29 +66,34 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
               fill
               className="object-cover"
               priority={index === 0}
+              sizes="100vw"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4">
-              <h1
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50" style={{ zIndex: 2 }}></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-4" style={{ zIndex: 10 }}>
+              <h1 
                 data-aos="fade-down"
                 data-aos-delay="200"
                 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 text-white text-center"
+                style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}
               >
                 {slide.title}
               </h1>
-              <p
+              <p 
                 data-aos="fade-up"
                 data-aos-delay="400"
                 className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-8 max-w-3xl mx-auto text-white text-center"
+                style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}
               >
                 {slide.description}
               </p>
-              <button
+              <Link
+                href="/nos-missions"
                 data-aos="zoom-in"
                 data-aos-delay="600"
-                className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300"
+                className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300 shadow-lg"
               >
                 En savoir plus →
-              </button>
+              </Link>
             </div>
           </div>
         ))}

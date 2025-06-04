@@ -11,17 +11,17 @@ import { CTASection } from "./components/CTASection";
 export default function Dashboard() {
   const slides = [
     {
-      image: "https://source.unsplash.com/random/1920x600?transport,truck",
+      image: "/images/slider/highway.webp",
       title: "Pour vos négociations transports",
       description: "Faites appel à Manage Transport",
     },
     {
-      image: "https://source.unsplash.com/random/1920x600?logistics,warehouse",
+      image: "/images/slider/consulting.webp",
       title: "Expertise professionnelle",
       description: "Plus de 30 ans d'expérience dans le transport",
     },
     {
-      image: "https://source.unsplash.com/random/1920x600?business,meeting",
+      image: "/images/slider/meeting.webp",
       title: "Solutions sur mesure",
       description: "Gagnez du temps et économisez de l'argent",
     },
