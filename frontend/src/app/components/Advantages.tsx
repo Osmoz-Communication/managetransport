@@ -68,8 +68,10 @@ export const Advantages = () => {
         >
           <div className="inline-flex items-center space-x-3 bg-white p-4 rounded-xl shadow-lg">
             <span className="flex-shrink-0">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                <path d="M3 3V21M3 21H21M3 21L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              <svg className="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                <path d="M2 12h20" stroke="currentColor" strokeWidth="2"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" strokeWidth="2"/>
               </svg>
             </span>
             <div className="text-left">

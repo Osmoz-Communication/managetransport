@@ -12,7 +12,7 @@ export const missions: Mission[] = [
   {
     slug: "organisation-appels-offres",
     title: "Organisation et gestion d'appels d'offres",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/appel_offre.webp",
     short: "Optimisez vos appels d'offres pour gagner en efficacité et en compétitivité.",
     intro: "Profitez de notre expérience pour optimiser l'organisation et la gestion de vos appels d'offres. ManageTransport vous accompagne dans la mise en place d'un appel d'offre dédié et spécifique à votre activité:",
     details: [
@@ -29,7 +29,7 @@ export const missions: Mission[] = [
   {
     slug: "plan-de-transport",
     title: "Diagnostic de plan de transport",
-    image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/plan-transport.webp",
     short: "Construisez un plan de transport performant et adapté à vos enjeux.",
     intro: "Profitez de notre expérience pour vous aider à réaliser des plans de transport organisés et optimisés. ManageTransport vous accompagne dans la construction de votre nouveau plan de transport du début à la fin.",
     details: [],
@@ -38,7 +38,7 @@ export const missions: Mission[] = [
   {
     slug: "optimisation-conditionnement",
     title: "Optimisation de conditionnement",
-    image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/budget.webp",
     short: "Réduisez vos coûts et améliorez la sécurité grâce à un emballage optimisé.",
     intro: "Profitez de notre expérience pour optimiser votre conditionnement. ManageTransport vous aide à améliorer votre stratégie d'emballage et ainsi optimiser :",
     details: [
@@ -53,7 +53,7 @@ export const missions: Mission[] = [
   {
     slug: "enquetes-satisfaction",
     title: "Réalisation d'enquêtes de satisfaction",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/satisfaction.webp",
     short: "Mesurez et améliorez la satisfaction de vos clients avec des enquêtes sur-mesure.",
     intro: "Profitez de notre expérience pour vous aider à organiser vos enquêtes de satisfaction. ManageTransport réalise pour vous une enquête :",
     details: [
@@ -68,7 +68,7 @@ export const missions: Mission[] = [
   {
     slug: "gestion-litiges-transport",
     title: "Gestion des litiges transport",
-    image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/litiges.webp",
     short: "Minimisez les risques et gérez efficacement les litiges liés au transport.",
     intro: "Profitez de notre expérience pour vous accompagner dans la gestion de vos dommages de transport. ManageTransport vous accompagne dans :",
     details: [
@@ -84,7 +84,7 @@ export const missions: Mission[] = [
   {
     slug: "assurance-securisation-marchandises",
     title: "Assurer et sécuriser vos marchandises",
-    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/assurance.webp",
     short: "Sécurisez vos flux et protégez vos biens avec des solutions d'assurance adaptées.",
     intro: "Profitez de notre expérience pour vous accompagner dans l'assurance et la sécurisation de vos marchandises. ManageTransport analyse avec vous vos besoins et vous propose :",
     details: [
@@ -96,7 +96,7 @@ export const missions: Mission[] = [
   {
     slug: "mise-en-place-kpi",
     title: "Mise en place de KPI pour votre entreprise",
-    image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/kpi.webp",
     short: "Pilotez votre performance grâce à des indicateurs sur-mesure.",
     intro: "Profitez de notre expérience pour mettre en place votre KPI.",
     details: [],
@@ -105,7 +105,7 @@ export const missions: Mission[] = [
   {
     slug: "choix-prestataires-qualite",
     title: "Choisir des prestataires de qualité",
-    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/emballage.webp",
     short: "Sélectionnez les meilleurs partenaires pour garantir la qualité de vos services.",
     intro: "Profitez de notre expérience pour choisir des prestataires dignes de confiance. ManageTransport vous accompagne vers une intégration progressive des nouveaux modes de distribution (modes doux, collaboratifs…) liés à la mutation de nos modes de consommation (E-commerce….) et des contraintes associées. Nous vous ferons découvrir de nouveaux acteurs qui intègrent progressivement le monde du transport ainsi que les innovations et nouvelles technologies associées.",
     details: [],
@@ -114,7 +114,7 @@ export const missions: Mission[] = [
   {
     slug: "distribution-urbaine",
     title: "Intégrer les contraintes de la distribution urbaine",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+    image: "/images/home/missions/distribution-urbaine.webp",
     short: "Réussissez vos livraisons urbaines malgré les contraintes réglementaires et environnementales.",
     intro: "Profitez de notre expérience dans la gestion des contraintes de la distribution urbaine. ManageTransport est là pour vous aider à trouver des solutions innovantes de livraison malgré le coût élevé du transport et les problématiques actuelles (saturation et réglementation des centres villes, accroissement des zones à faibles émissions…).",
     details: [],
