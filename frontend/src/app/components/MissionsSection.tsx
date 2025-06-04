@@ -40,7 +40,7 @@ export const MissionsSection = () => (
     <div className="w-full max-w-6xl px-4 mx-auto">
       <div data-aos="fade-down" className="flex flex-col items-center mb-10">
         <span className="uppercase text-gray-500 text-sm font-semibold tracking-widest mb-2">NOS MISSIONS</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-2">De quoi avez-vous besoin aujourd'hui ?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-2">De quoi avez-vous besoin aujourd&apos;hui ?</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-10">
         {missions.map((mission, i) => (
