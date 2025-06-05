@@ -6,7 +6,13 @@ import Image from "next/image"
 import { useLanguage } from "../contexts/LanguageContext"
 import { useTranslation } from "../hooks/useTranslation"
 import { getLocalizedPath } from "../locales/routes"
-import { getLocalizedMissionSlug } from "../locales/missionSlugs"
+import { getLocalizedMissionSlug, type MissionKey } from "../locales/missionSlugs"
+
+interface MissionData {
+  title: string;
+  short: string;
+  slug: MissionKey;
+}
 
 export const MissionsFullSection = () => {
   const { lang } = useLanguage();
@@ -15,7 +21,7 @@ export const MissionsFullSection = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([])
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  const missions = (t('missionsPage.missions') || []) as any[];
+  const missions = (t('missionsPage.missions') || []) as unknown as MissionData[];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,7 +68,7 @@ export const MissionsFullSection = () => {
 
         {/* Grille des missions ultra-moderne */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {missions.map((mission: any, i: number) => {
+          {missions.map((mission: MissionData, i: number) => {
             const missionPath = getLocalizedPath('missions', lang);
             const missionSlug = getLocalizedMissionSlug(mission.slug, lang);
             const fullPath = `${missionPath}/${missionSlug}`;

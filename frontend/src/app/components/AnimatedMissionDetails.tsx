@@ -9,7 +9,7 @@ import { useSlider } from "../hooks/useSlider"; // Path to your custom hook
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
 import { getLocalizedPath } from "../locales/routes";
-import { getLocalizedMissionSlug } from "../locales/missionSlugs";
+import { getLocalizedMissionSlug, type MissionKey } from "../locales/missionSlugs";
 
 interface MissionDetailsProps {
   mission: {
@@ -23,21 +23,32 @@ interface MissionDetailsProps {
   };
 }
 
+interface MissionData {
+  title: string;
+  short: string;
+  intro: string;
+  details: string[];
+  more?: string;
+  slug: MissionKey;
+}
+
 export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
   
-  const allMissions = (t('missionsPage.missions') || []) as any[];
+  const allMissions = useMemo(() => {
+    return (t('missionsPage.missions') || []) as unknown as MissionData[];
+  }, [t]);
   
   const otherMissions = useMemo(
-    () => allMissions.filter((m: any) => m.slug !== mission.slug),
-    [mission.slug, allMissions]
+    () => allMissions.filter((m: MissionData) => m.slug !== mission.slug),
+    [allMissions, mission.slug]
   );
 
   // Find the translated mission data
   const translatedMission = useMemo(
-    () => allMissions.find((m: any) => m.slug === mission.slug) || mission,
-    [mission.slug, allMissions, mission]
+    () => allMissions.find((m: MissionData) => m.slug === mission.slug) || mission,
+    [allMissions, mission]
   );
 
   const slidesPerView = 3; // Keep this consistent with your slider logic
@@ -207,7 +218,7 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
                   transform: `translateX(-${currentIndex * slideWidth}%)`,
                 }}
               >
-                {otherMissions.map((m: any) => (
+                {otherMissions.map((m: MissionData) => (
                   <div
                     key={m.slug}
                     style={{ width: `${slideWidth}%` }}

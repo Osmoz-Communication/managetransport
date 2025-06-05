@@ -18,7 +18,7 @@ export default function AboutPage() {
   const { t } = useTranslation(lang);
 
   const strengthsData = t('aboutPage.strengths.items');
-  const strengths = Array.isArray(strengthsData) ? strengthsData as StrengthItem[] : [];
+  const strengths = Array.isArray(strengthsData) ? strengthsData as unknown as StrengthItem[] : [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
                   <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-6 rounded-xl border-l-4 border-primary">
                     <blockquote className="text-lg font-medium text-gray-900 italic mb-4">
-                      "{t('aboutPage.presentation.quote') as string}"
+                      &ldquo;{t('aboutPage.presentation.quote') as string}&rdquo;
                     </blockquote>
                     <cite className="text-primary font-bold">
                       — {t('aboutPage.presentation.founderName') as string}

@@ -8,7 +8,7 @@ import ValuesPage from '../../components/ValuesPage';
 import AboutPage from '../../components/AboutPage';
 
 interface Props {
-  params: { lang: string; slug: string };
+  params: Promise<{ lang: string; slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -27,8 +27,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default function DynamicPage({ params }: Props) {
-  const { lang, slug } = params;
+export default async function DynamicPage({ params }: Props) {
+  const { lang, slug } = await params;
   
   // Vérifier si la langue est valide
   if (!languages.includes(lang as Language)) {

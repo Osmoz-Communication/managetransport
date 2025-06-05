@@ -7,8 +7,7 @@ import LanguageSelector from "./LanguageSelector";
 import SocialIcon from "../SocialIcon";
 import { useLanguage } from "../../contexts/LanguageContext";
 
-const supportedLangs = ['fr', 'en'];
-const LANG_KEY = 'user-lang';
+
 
 export default function Header() {
   const { lang, changeLang } = useLanguage();

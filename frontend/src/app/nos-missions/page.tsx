@@ -1,49 +1,35 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { MissionsFullSection } from "./MissionsFullSection"
-import { CTASection } from "../components/CTASection"
-import { Hero } from "../components/Hero"
-import { useLanguage } from "../contexts/LanguageContext"
-import { useTranslation } from "../hooks/useTranslation"
-import { getLocalizedPath } from "../locales/routes"
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function NosMissions() {
-  const { lang } = useLanguage();
-  const { t } = useTranslation(lang);
+export default function MissionsRedirect() {
+  const router = useRouter();
 
   useEffect(() => {
-    // Réinitialiser AOS si nécessaire
-    if (typeof window !== "undefined") {
-      import("aos").then((AOS) => {
-        AOS.default.refresh()
-      })
+    // Récupérer la langue préférée ou utiliser français par défaut
+    let preferredLang = 'fr';
+    
+    if (typeof window !== 'undefined') {
+      const storedLang = localStorage.getItem('user-lang');
+      if (storedLang && ['fr', 'en'].includes(storedLang)) {
+        preferredLang = storedLang;
+      } else {
+        const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+        if (['fr', 'en'].includes(browserLang)) {
+          preferredLang = browserLang;
+        }
+      }
     }
-  }, [])
+
+    // Rediriger vers la nouvelle structure
+    const newSlug = preferredLang === 'fr' ? 'nos-missions' : 'our-missions';
+    router.replace(`/${preferredLang}/${newSlug}`);
+  }, [router]);
 
   return (
-    <div className="min-h-screen bg-white">
-      <Hero
-        badge={t('missionsPage.hero.badge') as string}
-        title={t('missionsPage.hero.title') as string}
-        description={t('missionsPage.hero.description') as string}
-        backgroundImage="/images/hero/nos-missions.webp"
-      />
-
-      {/* Section missions */}
-      <div data-aos="fade-up" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
-        <MissionsFullSection />
-      </div>
-
-      {/* Section CTA moderne */}
-      <div data-aos="fade-up" data-aos-once="true" data-aos-delay="200" data-aos-duration="600">
-        <CTASection
-          title={t('missionsPage.cta.title') as string}
-          description={t('missionsPage.cta.description') as string}
-          secondaryButtonText={t('missionsPage.cta.secondaryButton') as string}
-          secondaryButtonHref={getLocalizedPath('values', lang)}
-        />
-      </div>
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
     </div>
-  )
+  );
 }

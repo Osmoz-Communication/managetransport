@@ -14,8 +14,8 @@ export function useTranslation(lang: 'fr' | 'en') {
     const keys = key.split('.');
     let value: TranslationValue = translations[lang];
     for (const k of keys) {
-      if (typeof value === 'object' && value !== null) {
-        value = (value as any)[k];
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        value = (value as { [key: string]: TranslationValue })[k];
       } else {
         return key;
       }

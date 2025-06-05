@@ -5,7 +5,7 @@ import { missions } from '../../../nos-missions/missionData';
 import { getMissionKeyFromSlug } from '../../../locales/missionSlugs';
 
 interface Props {
-  params: { lang: string; slug: string; mission: string };
+  params: Promise<{ lang: string; slug: string; mission: string }>;
 }
 
 export async function generateStaticParams() {
@@ -28,8 +28,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default function MissionPage({ params }: Props) {
-  const { lang, slug, mission: missionSlug } = params;
+export default async function MissionPage({ params }: Props) {
+  const { lang, slug, mission: missionSlug } = await params;
   
   // Vérifier si la langue est valide
   if (!languages.includes(lang as Language)) {

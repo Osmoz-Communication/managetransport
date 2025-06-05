@@ -8,6 +8,17 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
 import { getLocalizedPath } from "../locales/routes";
 
+interface ValueItem {
+  title: string;
+  text: string;
+}
+
+interface StepItem {
+  title: string;
+  description: string;
+  numero: string;
+}
+
 export default function ValuesPage() {
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
@@ -17,12 +28,12 @@ export default function ValuesPage() {
   const valeursRefs = useRef<(HTMLDivElement | null)[]>([]);
   const etapesRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const getValuesData = (t: (key: string) => any) => ({
-    valeurs: (t('valuesPage.values') || []).map((val: any) => ({
+  const getValuesData = (t: (key: string) => unknown) => ({
+    valeurs: (t('valuesPage.values') as unknown as ValueItem[] || []).map((val: ValueItem) => ({
       title: val.title,
       text: val.text,
     })),
-    etapes: (t('valuesPage.steps') || []).map((etape: any, index: number) => ({
+    etapes: (t('valuesPage.steps') as unknown as StepItem[] || []).map((etape: StepItem, index: number) => ({
       ...etape,
       numero: `0${index + 1}`
     }))
@@ -129,7 +140,7 @@ export default function ValuesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {valeurs.map((valeur: any, index: number) => {
+            {valeurs.map((valeur: ValueItem, index: number) => {
               const IconComponent = iconMap[valeur.title] || StarIcon;
               return (
                 <div
@@ -204,7 +215,7 @@ export default function ValuesPage() {
 
             {/* Étapes */}
             <div className="space-y-12">
-              {etapes.map((etape: any, index: number) => (
+              {etapes.map((etape: StepItem, index: number) => (
                 <div
                   key={index}
                   ref={(el) => {
