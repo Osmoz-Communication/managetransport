@@ -6,6 +6,8 @@ import Footer from "./components/Footer/Footer";
 import AOSInitializer from "./components/AOSInitializer";
 import { AlertContainer } from "./components/Alert/Alert";
 import { AlertProvider } from "./providers/AlertProvider";
+import { FontAwesomeSetup } from "./components/FontAwesomeSetup";
+import 'aos/dist/aos.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +35,9 @@ export default function RootLayout({
         <link rel="icon" href="/cropped-arbre-de-vie-32x32.png" type="image/png" sizes="32x32" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
+        <FontAwesomeSetup />
         <AlertProvider>
           <AOSInitializer />
           <Header />

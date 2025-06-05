@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { HandshakeIcon, ReactivityIcon, EarIcon, OrganizationIcon, MoneyIcon, StarIcon } from "../icons"
 import { CTASection } from "../components/CTASection"
+import { Hero } from "../components/Hero"
 
 export default function NosValeurs() {
   const [visibleValeurs, setVisibleValeurs] = useState<number[]>([])
@@ -135,39 +136,35 @@ export default function NosValeurs() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section professionnel */}
-      <section className="relative bg-gradient-to-br from-primary to-primary/80 py-16 lg:py-20 overflow-hidden">
-        {/* Image de fond subtile */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90"></div>
-        </div>
-
-        {/* Effets géométriques subtils */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-10 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
-
-        <div className="relative container mx-auto px-4 text-center">
-          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-sm mb-6">
-            Excellence & Valeurs
-          </div>
-
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">Nos Valeurs</h1>
-
-          <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Les principes qui guident notre expertise et forgent notre engagement envers votre réussite
-          </p>
-        </div>
-      </section>
+      <Hero
+        badge="Excellence & Valeurs"
+        title="Nos Valeurs"
+        description="Les principes qui guident notre expertise et forgent notre engagement envers votre réussite"
+        backgroundImage="/images/hero/nos-valeurs.webp"
+      />
 
       {/* Section des valeurs */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" data-aos="fade-up" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-6">
+            <div 
+              className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-6"
+              data-aos="fade-down" 
+              data-aos-once="true"
+              data-aos-delay="200" 
+              data-aos-duration="500"
+            >
               Nos Fondamentaux
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Ce qui nous guide au quotidien</h2>
+            <h2 
+              className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
+              data-aos="fade-up" 
+              data-aos-once="true"
+              data-aos-delay="300" 
+              data-aos-duration="600"
+            >
+              Ce qui nous guide au quotidien
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -210,14 +207,36 @@ export default function NosValeurs() {
       </section>
 
       {/* Section processus avec timeline moderne */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" data-aos="fade-up" data-aos-once="true" data-aos-delay="200" data-aos-duration="600">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-6">
+            <div 
+              className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-6"
+              data-aos="fade-down" 
+              data-aos-once="true"
+              data-aos-delay="300" 
+              data-aos-duration="500"
+            >
               Notre Méthodologie
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Comment nous procédons</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Une approche structurée en 6 étapes claires</p>
+            <h2 
+              className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
+              data-aos="fade-up" 
+              data-aos-once="true"
+              data-aos-delay="400" 
+              data-aos-duration="600"
+            >
+              Comment nous procédons
+            </h2>
+            <p 
+              className="text-lg text-gray-600 max-w-2xl mx-auto"
+              data-aos="fade-up" 
+              data-aos-once="true"
+              data-aos-delay="500" 
+              data-aos-duration="600"
+            >
+              Une approche structurée en 6 étapes claires
+            </p>
           </div>
 
           {/* Timeline simplifiée */}

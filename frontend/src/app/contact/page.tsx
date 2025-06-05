@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useAlerts } from "../hooks/useAlert";
+import { Hero } from "../components/Hero";
 
 interface FormData {
   firstName: string;
@@ -70,38 +71,17 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section professionnel */}
       <div data-aos="fade-down">
-        <section className="relative bg-gradient-to-br from-primary to-primary/80 py-16 lg:py-20 overflow-hidden">
-          {/* Image de fond subtile */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center"></div>
-            <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90"></div>
-          </div>
-
-          {/* Effets géométriques subtils */}
-          <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-10 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
-
-          <div className="relative container mx-auto px-4 text-center">
-            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-sm mb-6">
-              Contactez-nous
-            </div>
-
-            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Nous Contacter
-            </h1>
-
-            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Prenez contact avec nous afin de pouvoir nous rencontrer et
-              discuter de votre projet transport
-            </p>
-          </div>
-        </section>
+        <Hero
+          badge="Contactez-nous"
+          title="Nous Contacter"
+          description="Prenez contact avec nous afin de pouvoir nous rencontrer et discuter de votre projet transport"
+          backgroundImage="/images/hero/nous-rencontrer.webp"
+        />
       </div>
 
       {/* Section formulaire */}
-      <div data-aos="fade-up">
+      <div data-aos="fade-up" data-aos-once="true" data-aos-delay="100" data-aos-duration="600">
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center mb-12">
@@ -248,7 +228,7 @@ export default function Contact() {
       </div>
 
       {/* Section contact direct */}
-      <div data-aos="fade-up">
+      <div data-aos="fade-up" data-aos-once="true" data-aos-delay="200" data-aos-duration="600">
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center mb-12">

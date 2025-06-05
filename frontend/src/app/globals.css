@@ -62,3 +62,9 @@ body {
 .nav-link[aria-current="page"] {
   color: var(--primary);
 }
+
+/* Correction pour le dépassement d'AOS sur mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}

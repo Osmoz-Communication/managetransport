@@ -2,67 +2,20 @@
 
 import Image from "next/image";
 import { CTASection } from "../components/CTASection";
+import { Hero } from "../components/Hero";
 
 export default function QuiSommesNous() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary to-primary/80 py-16 lg:py-20 overflow-hidden">
-        {/* Image de fond subtile */}
-        <div 
-          data-aos="fade-in"
-          data-aos-duration="1000"
-          className="absolute inset-0 opacity-10"
-        >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90"></div>
-        </div>
-        
-        {/* Effets géométriques subtils */}
-        <div 
-          data-aos="zoom-in"
-          data-aos-delay="200"
-          data-aos-duration="800"
-          className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"
-        ></div>
-        <div 
-          data-aos="zoom-in"
-          data-aos-delay="400"
-          data-aos-duration="800"
-          className="absolute bottom-10 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl"
-        ></div>
-        
-        <div className="relative container mx-auto px-4 text-center">
-          <div 
-            data-aos="fade-up"
-            data-aos-delay="300"
-            className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-sm mb-6"
-          >
-            Notre Histoire
-          </div>
-          
-          <h1 
-            data-aos="fade-up"
-            data-aos-delay="500"
-            data-aos-duration="800"
-            className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-          >
-            Qui sommes-nous ?
-          </h1>
-          
-          <p 
-            data-aos="fade-up"
-            data-aos-delay="700"
-            data-aos-duration="800"
-            className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed"
-          >
-            Découvrez l&apos;expertise et la passion qui animent notre engagement à vos côtés
-          </p>
-        </div>
-      </section>
+      <Hero
+        badge="Notre Histoire"
+        title="Qui sommes-nous ?"
+        description="Découvrez l'expertise et la passion qui animent notre engagement à vos côtés"
+        backgroundImage="/images/hero/qui-sommes-nous.webp"
+      />
 
       {/* Section Présentation */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Photo et informations */}
@@ -104,7 +57,7 @@ export default function QuiSommesNous() {
                   Jean-Claude RAVINEAU
                 </h2>
                 <div 
-                  data-aos="slide-right"
+                  data-aos="fade-up"
                   data-aos-delay="600"
                   className="h-1 w-20 bg-primary rounded-full mb-4 mx-auto lg:mx-0"
                 ></div>
@@ -121,7 +74,7 @@ export default function QuiSommesNous() {
             {/* Contenu textuel */}
             <div className="space-y-6">
               <div 
-                data-aos="fade-left"
+                data-aos="fade-up"
                 data-aos-delay="300"
                 className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-6"
               >
@@ -129,7 +82,7 @@ export default function QuiSommesNous() {
               </div>
               
               <p 
-                data-aos="fade-left"
+                data-aos="fade-up"
                 data-aos-delay="500"
                 data-aos-duration="800"
                 data-aos-offset="0"
@@ -139,7 +92,7 @@ export default function QuiSommesNous() {
               </p>
               
               <p 
-                data-aos="fade-left"
+                data-aos="fade-up"
                 data-aos-delay="700"
                 data-aos-duration="800"
                 data-aos-offset="0"
@@ -164,7 +117,7 @@ export default function QuiSommesNous() {
               </div>
               
               <p 
-                data-aos="fade-left"
+                data-aos="fade-up"
                 data-aos-delay="1100"
                 data-aos-duration="800"
                 data-aos-offset="0"
@@ -245,7 +198,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Section Valeurs clés */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
             <div 
