@@ -1,7 +1,8 @@
 import fr from '../locales/fr';
 import en from '../locales/en';
 
-type TranslationValue = string | { [key: string]: TranslationValue };
+type TranslationValue = string | { [key: string]: TranslationValue } | TranslationValue[];
+
 type Translations = {
   [key: string]: { [key: string]: TranslationValue };
 };
@@ -14,13 +15,15 @@ export function useTranslation(lang: 'fr' | 'en') {
     let value: TranslationValue = translations[lang];
     for (const k of keys) {
       if (typeof value === 'object' && value !== null) {
-        value = value[k];
+        value = (value as any)[k];
       } else {
         return key;
       }
-      if (value === undefined) return key;
+      if (value === undefined) {
+        return key;
+      }
     }
-    return typeof value === 'string' ? value : key;
+    return value;
   }
   return { t };
 } 

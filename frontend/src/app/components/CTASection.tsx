@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
 
 interface CTASectionProps {
   title?: string;
@@ -13,15 +15,25 @@ interface CTASectionProps {
 }
 
 export const CTASection: React.FC<CTASectionProps> = ({
-  title = "Prêt à optimiser votre transport ?",
-  description = "Nos experts analysent vos besoins et vous proposent des solutions sur mesure pour transformer vos défis logistiques en opportunités.",
-  primaryButtonText = "Obtenir un devis gratuit",
+  title: titleProp,
+  description: descriptionProp,
+  primaryButtonText: primaryButtonTextProp,
   primaryButtonHref = "/contact",
-  secondaryButtonText = "Découvrir nos missions",
-  secondaryButtonHref = "/nos-missions",
-  badge = "Expertise Premium",
+  secondaryButtonText: secondaryButtonTextProp,
+  secondaryButtonHref: secondaryButtonHrefProp,
+  badge: badgeProp,
   className = ""
 }) => {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+
+  const title = titleProp ?? t('cta.default.title');
+  const description = descriptionProp ?? t('cta.default.description');
+  const primaryButtonText = primaryButtonTextProp ?? t('cta.default.primaryButton');
+  const secondaryButtonText = secondaryButtonTextProp ?? t('cta.default.secondaryButton');
+  const secondaryButtonHref = secondaryButtonHrefProp ?? '/nos-missions';
+  const badge = badgeProp ?? t('cta.default.badge');
+
   return (
     <section className={`py-20 bg-gray-50 ${className}`}>
       <div className="container mx-auto px-4 text-center">
@@ -39,7 +51,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 data-aos-delay="100"
                 className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm mb-6"
               >
-                {badge}
+                {badge as string}
               </div>
               
               <h2 
@@ -47,7 +59,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 data-aos-delay="200"
                 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
               >
-                {title}
+                {title as string}
               </h2>
               
               <p 
@@ -55,7 +67,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 data-aos-delay="300"
                 className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
               >
-                {description}
+                {description as string}
               </p>
               
               <div 
@@ -67,7 +79,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   href={primaryButtonHref}
                   className="group relative inline-flex items-center px-8 py-3 bg-primary text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 overflow-hidden"
                 >
-                  <span className="relative z-10">{primaryButtonText}</span>
+                  <span className="relative z-10">{primaryButtonText as string}</span>
                   <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -79,15 +91,17 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   <div className="absolute inset-0 bg-primary/20 rounded-lg opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
                 </a>
                 
-                <Link 
-                  href={secondaryButtonHref}
-                  className="group inline-flex items-center px-8 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
-                >
-                  <span>{secondaryButtonText}</span>
-                  <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
+                {secondaryButtonHref && secondaryButtonText && (
+                  <Link 
+                    href={secondaryButtonHref}
+                    className="group inline-flex items-center px-8 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
+                  >
+                    <span>{secondaryButtonText as string}</span>
+                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </Link>
+                )}
               </div>
               
               {/* Indicateurs de confiance */}
@@ -102,7 +116,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   className="flex items-center gap-2"
                 >
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Réponse sous 24h</span>
+                  <span>{t('cta.response') as string}</span>
                 </div>
                 <div 
                   data-aos="fade-up"
@@ -110,7 +124,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   className="flex items-center gap-2"
                 >
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span>Devis gratuit</span>
+                  <span>{t('cta.quote') as string}</span>
                 </div>
                 <div 
                   data-aos="fade-left"
@@ -118,7 +132,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   className="flex items-center gap-2"
                 >
                   <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span>30+ ans d&apos;expérience</span>
+                  <span>{t('cta.experience') as string}</span>
                 </div>
               </div>
             </div>

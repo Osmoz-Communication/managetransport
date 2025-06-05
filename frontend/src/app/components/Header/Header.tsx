@@ -5,27 +5,18 @@ import Logo from "./Logo";
 import Nav from "./Nav";
 import LanguageSelector from "./LanguageSelector";
 import SocialIcon from "../SocialIcon";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const supportedLangs = ['fr', 'en'];
 const LANG_KEY = 'user-lang';
 
 export default function Header() {
-  const [lang, setLang] = useState<'fr' | 'en'>('fr');
+  const { lang, changeLang } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedLang = localStorage.getItem(LANG_KEY);
-      if (storedLang && supportedLangs.includes(storedLang)) {
-        setLang(storedLang as 'fr' | 'en');
-      } else {
-        const browserLang = navigator.language?.slice(0, 2).toLowerCase();
-        if (supportedLangs.includes(browserLang)) {
-          setLang(browserLang as 'fr' | 'en');
-        }
-      }
-
       const handleScroll = () => {
         setIsScrolled(window.scrollY > 20);
       };
@@ -34,13 +25,6 @@ export default function Header() {
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, []);
-
-  const handleLangChange = (newLang: 'fr' | 'en') => {
-    setLang(newLang);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(LANG_KEY, newLang);
-    }
-  };
 
   return (
     <header className="w-full bg-white border-b border-gray-100 sticky top-0 z-30 transition-all duration-300">
@@ -52,7 +36,7 @@ export default function Header() {
           <Nav lang={lang} />
         </nav>
         <div className="hidden md:flex items-center gap-2 bg-transparent">
-          <LanguageSelector currentLang={lang} onLangChange={handleLangChange} />
+          <LanguageSelector currentLang={lang} onLangChange={changeLang} />
           <div className="h-6 w-px bg-gray-200 mx-2" />
           <div className="flex items-center gap-2 bg-transparent">
             <SocialIcon brand="facebook" variant="header" />
@@ -74,7 +58,7 @@ export default function Header() {
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 animate-fade-in">
           <Nav lang={lang} />
           <div className="flex items-center gap-4 mt-6 justify-center">
-            <LanguageSelector currentLang={lang} onLangChange={handleLangChange} />
+            <LanguageSelector currentLang={lang} onLangChange={changeLang} />
             <div className="h-6 w-px bg-gray-200" />
             <div className="flex items-center gap-2 bg-transparent">
               <SocialIcon brand="facebook" variant="header" />

@@ -6,8 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import { useSlider } from "../hooks/useSlider"; // Path to your custom hook
-// Ensure this import path is correct for your missionData file
-import { missions as allMissions } from "@/app/nos-missions/missionData";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
+import { getLocalizedPath } from "../locales/routes";
+import { getLocalizedMissionSlug } from "../locales/missionSlugs";
 
 interface MissionDetailsProps {
   mission: {
@@ -22,9 +24,20 @@ interface MissionDetailsProps {
 }
 
 export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+  
+  const allMissions = (t('missionsPage.missions') || []) as any[];
+  
   const otherMissions = useMemo(
-    () => allMissions.filter((m) => m.slug !== mission.slug),
-    [mission.slug]
+    () => allMissions.filter((m: any) => m.slug !== mission.slug),
+    [mission.slug, allMissions]
+  );
+
+  // Find the translated mission data
+  const translatedMission = useMemo(
+    () => allMissions.find((m: any) => m.slug === mission.slug) || mission,
+    [mission.slug, allMissions, mission]
   );
 
   const slidesPerView = 3; // Keep this consistent with your slider logic
@@ -50,9 +63,24 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
   // Calculate slide width based on slidesPerView
   const slideWidth = 100 / slidesPerView;
 
+  const getImagePath = (slug: string) => {
+    const imageMap: { [key: string]: string } = {
+      'organisation-appels-offres': 'appel_offre',
+      'plan-de-transport': 'plan-transport',
+      'optimisation-conditionnement': 'budget',
+      'enquetes-satisfaction': 'satisfaction',
+      'gestion-litiges-transport': 'litiges',
+      'assurance-securisation-marchandises': 'assurance',
+      'mise-en-place-kpi': 'kpi',
+      'choix-prestataires-qualite': 'emballage',
+      'distribution-urbaine': 'distribution-urbaine'
+    };
+    return `/images/home/missions/${imageMap[slug] || 'placeholder'}.webp`;
+  };
+
   return (
     <>
-      {/* Main mission details block (unchanged) */}
+      {/* Main mission details block */}
       <div className="w-full flex flex-col md:flex-row items-start gap-10 mb-16">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -61,8 +89,8 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
           className="flex-shrink-0 w-full md:w-[380px] max-w-xl rounded-2xl overflow-hidden shadow-lg"
         >
           <Image
-            src={mission.image}
-            alt={mission.title}
+            src={getImagePath(mission.slug)}
+            alt={translatedMission.title}
             width={800}
             height={500}
             className="object-cover w-full h-72 md:h-96"
@@ -75,15 +103,15 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
           className="flex-1 w-full flex flex-col justify-start bg-[#f8f9fc] md:bg-white border-l-0 md:border-l-4 border-[#5d6ef8] rounded-2xl md:rounded-l-none p-6 md:p-10 shadow-inner min-h-[400px]"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            {mission.title}
+            {translatedMission.title}
           </h1>
           <div className="text-lg text-[#5d6ef8] font-semibold mb-4">
-            {mission.short}
+            {translatedMission.short}
           </div>
-          <p className="text-base text-gray-700 mb-4">{mission.intro}</p>
-          {mission.details.length > 0 && (
+          <p className="text-base text-gray-700 mb-4">{translatedMission.intro}</p>
+          {translatedMission.details && translatedMission.details.length > 0 && (
             <ul className="mb-8 pl-5 space-y-2">
-              {mission.details.map((d, i) => (
+              {translatedMission.details.map((d: string, i: number) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
@@ -96,17 +124,17 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
               ))}
             </ul>
           )}
-          {mission.more && (
+          {translatedMission.more && (
             <div className="bg-[#f4f5fa] rounded-xl p-6 text-gray-700 text-base mb-6 shadow-inner animate-fade-in">
-              {mission.more}
+              {translatedMission.more}
             </div>
           )}
           <div className="flex justify-center mt-auto">
             <Link
-              href="/contact"
+              href={getLocalizedPath('contact', lang)}
               className="inline-block bg-[#5d6ef8] hover:bg-[#4a6cf7] text-white font-semibold px-8 py-3 rounded-full text-lg shadow transition-colors"
             >
-              Contactez-nous
+              {t('missionsPage.detail.contact') as string}
             </Link>
           </div>
         </motion.div>
@@ -116,7 +144,7 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
       {otherMissions.length > 0 && (
         <div className="w-full flex flex-col">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-            Découvrez nos autres services :
+            {t('missionsPage.detail.otherServices') as string}
           </h2>
           {/* Main slider container. This div still gets 'group' for arrow visibility. */}
           <div className="relative group w-full max-w-6xl mx-auto px-12">
@@ -179,34 +207,32 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
                   transform: `translateX(-${currentIndex * slideWidth}%)`,
                 }}
               >
-                {otherMissions.map((m) => (
+                {otherMissions.map((m: any) => (
                   <div
                     key={m.slug}
                     style={{ width: `${slideWidth}%` }}
                     className="flex-shrink-0 px-3 select-none"
                   >
-                    {/* The Link for each card:
-                        - REMOVED 'group' from here.
-                        - Now the hover effects for image/text will use direct ':hover' or apply to children. */}
+                    {/* The Link for each card */}
                     <Link
-                      href={`/nos-missions/${m.slug}`}
+                      href={`${getLocalizedPath('missions', lang)}/${getLocalizedMissionSlug(m.slug, lang)}`}
                       className="flex flex-col items-center w-full"
                     >
                       <div className="rounded-xl overflow-hidden shadow-lg mb-2 w-full aspect-square bg-white">
-                        {/* Image: Changed 'group-hover:scale-105' to 'hover:scale-105' */}
+                        {/* Image */}
                         <Image
-                          src={m.image}
+                          src={getImagePath(m.slug)}
                           alt={m.title}
                           width={400}
                           height={400}
                           className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      {/* Title: Changed 'group-hover:text-[#5d6ef8]' to 'hover:text-[#5d6ef8]' */}
+                      {/* Title */}
                       <div className="text-base font-medium text-center mt-2 text-gray-900 hover:text-[#5d6ef8] transition-colors duration-300">
                         {m.title}
                       </div>
-                      {/* Short Description: No hover effect needed here from your original code */}
+                      {/* Short Description */}
                       <div className="text-sm text-gray-500 text-center line-clamp-2 mt-1">
                         {m.short}
                       </div>
@@ -226,7 +252,7 @@ export function AnimatedMissionDetails({ mission }: MissionDetailsProps) {
                         ? "bg-[#5d6ef8] w-4"
                         : "bg-gray-300 hover:bg-gray-400"
                     }`}
-                    aria-label={`Aller à la slide ${index + 1}`}
+                    aria-label={`${t('missionsPage.detail.goToSlide') as string} ${index + 1}`}
                   />
                 ))}
               </div>

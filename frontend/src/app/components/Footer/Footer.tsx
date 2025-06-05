@@ -3,9 +3,15 @@
 import Image from "next/image";
 import SocialIcon from "../SocialIcon";
 import Link from "next/link";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { useTranslation } from "../../hooks/useTranslation";
+import { getLocalizedPath } from "../../locales/routes";
 
 export default function Footer() {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
   const year = new Date().getFullYear();
+  
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-12 md:gap-20 px-4 py-10 md:pt-12 md:pb-4 max-w-7xl mx-auto w-full text-center md:text-left">
@@ -20,35 +26,51 @@ export default function Footer() {
             className="w-auto h-auto mx-auto" 
             unoptimized
           />
-          <div className="my-5 text-lg text-center">Faisons avancer votre projet de transport<br />ensemble</div>
+          <div 
+            className="my-5 text-lg text-center"
+            dangerouslySetInnerHTML={{ __html: t("footer.slogan") as string }}
+          />
         </div>
         {/* Bloc liens */}
         <div className="flex-1 min-w-[180px] flex flex-col items-center">
-          <div className="font-bold text-primary text-xl mb-4">Les pages importantes</div>
+          <div className="font-bold text-primary text-xl mb-4">
+            {t("footer.importantPages") as string}
+          </div>
           <div className="flex flex-col gap-1 text-base items-center">
-            <Link href="/" className="text-gray-900 hover:text-primary transition-colors">Accueil</Link>
-            <Link href="/nos-missions" className="text-gray-900 hover:text-primary transition-colors">Nos missions</Link>
-            <Link href="/solutions" className="text-gray-900 hover:text-primary transition-colors">Nos solutions</Link>
-            <Link href="/valeurs" className="text-gray-900 hover:text-primary transition-colors">Nos valeurs</Link>
-            <Link href="/qui-sommes-nous" className="text-gray-900 hover:text-primary transition-colors">Qui sommes-nous</Link>
-            <Link href="/contact" className="text-gray-900 hover:text-primary transition-colors">Nous rencontrer</Link>
+            <Link href={`/${lang}`} className="text-gray-900 hover:text-primary transition-colors">
+              {t("footer.links.home") as string}
+            </Link>
+            <Link href={getLocalizedPath('missions', lang)} className="text-gray-900 hover:text-primary transition-colors">
+              {t("footer.links.missions") as string}
+            </Link>
+            <Link href={getLocalizedPath('values', lang)} className="text-gray-900 hover:text-primary transition-colors">
+              {t("footer.links.values") as string}
+            </Link>
+            <Link href={getLocalizedPath('about', lang)} className="text-gray-900 hover:text-primary transition-colors">
+              {t("footer.links.about") as string}
+            </Link>
+            <Link href={getLocalizedPath('contact', lang)} className="text-gray-900 hover:text-primary transition-colors">
+              {t("footer.links.contact") as string}
+            </Link>
           </div>
         </div>
         {/* Bloc contacts + social icons */}
         <div className="flex-1 min-w-[220px] flex flex-col items-center">
-          <div className="font-bold text-primary text-xl mb-4">Nos contacts</div>
+          <div className="font-bold text-primary text-xl mb-4">
+            {t("footer.contacts") as string}
+          </div>
           <div className="flex flex-col gap-3 text-base items-center">
             <div className="flex items-center gap-2">
               <svg width={20} height={20} fill="#2d347b" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.61a1 1 0 01-1 1C10.07 22 2 13.93 2 4.99a1 1 0 011-1h3.61a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.21z" /></svg>
-              06 43 32 88 74
+              {t("footer.phone") as string}
             </div>
             <div className="flex items-center gap-2">
               <svg width={20} height={20} fill="#2d347b" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" /></svg>
-              contact@managetransport.fr
+              {t("footer.email") as string}
             </div>
             <div className="flex items-center gap-2">
               <svg width={20} height={20} fill="#2d347b" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
-              11 Grande Rue, 77580 Guérard
+              {t("footer.address") as string}
             </div>
           </div>
           <div className="flex justify-center gap-4 mt-6">
@@ -59,7 +81,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-black text-white text-center py-3 text-base font-bold">
-        ©{year} ManageTransport - Tous droits réservés
+        ©{year} ManageTransport - {t("footer.copyright") as string}
       </div>
     </footer>
   );

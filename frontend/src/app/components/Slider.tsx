@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { SLIDER_INTERVAL } from "../../constants";
 import { useSlider } from "../hooks/useSlider";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
+import { getLocalizedPath } from "../locales/routes";
 
 interface Slide {
   image: string;
@@ -14,6 +17,9 @@ interface SliderProps {
 }
 
 export const Slider: React.FC<SliderProps> = ({ slides }) => {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+  
   const {
     currentIndex: currentSlide,
     nextSlide: goToNextSlide,
@@ -87,12 +93,12 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
                 {slide.description}
               </p>
               <Link
-                href="/nos-missions"
+                href={getLocalizedPath('missions', lang)}
                 data-aos="zoom-in"
                 data-aos-delay="600"
                 className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300 shadow-lg"
               >
-                En savoir plus →
+                {t("homepage.slider.button") as string}
               </Link>
             </div>
           </div>

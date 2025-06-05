@@ -1,9 +1,36 @@
+"use client";
+
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
+import { getLocalizedPath } from "../locales/routes";
+
+interface ContactInfo {
+  title: string;
+  phone: string;
+  description: string;
+  button: string;
+}
+
+interface AvailabilityInfo {
+  title: string;
+  schedule: string;
+  morning: string;
+  afternoon: string;
+  button: string;
+}
+
+interface EmailInfo {
+  title: string;
+}
 
 export const ParallaxSection = () => {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+  
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,6 +44,10 @@ export const ParallaxSection = () => {
     [0, 0.3, 0.7, 1],
     [0.5, 1, 1, 0.5]
   ); // Apparition et disparition plus douces
+
+  const availability = t("homepage.parallax.availability") as unknown as AvailabilityInfo;
+  const contact = t("homepage.parallax.contact") as unknown as ContactInfo;
+  const email = t("homepage.parallax.email") as unknown as EmailInfo;
 
   return (
     <section
@@ -42,15 +73,14 @@ export const ParallaxSection = () => {
           data-aos="fade-down"
           className="text-4xl md:text-5xl font-bold text-white mb-4 text-center drop-shadow-lg"
         >
-          Atteignez vos objectifs
+          {t("homepage.parallax.title") as string}
         </h2>
         <p
           data-aos="fade-up"
           data-aos-delay="200"
           className="text-lg md:text-2xl text-white mb-10 text-center drop-shadow max-w-3xl mx-auto"
         >
-          Nous serons votre bras droit pour vous aider à atteindre les sommets
-          dont vous rêvez...
+          {t("homepage.parallax.subtitle") as string}
         </p>
       </div>
       {/* Cartes animées avec AOS */}
@@ -68,17 +98,17 @@ export const ParallaxSection = () => {
               <polyline points="12,6 12,12 16,14" stroke="currentColor" strokeWidth="2"/>
             </svg>
           </div>
-          <div className="font-bold text-2xl mb-2">Disponibilités</div>
+          <div className="font-bold text-2xl mb-2">{availability.title}</div>
           <div className="mb-2 text-base font-semibold">
-            Du lundi au vendredi
+            {availability.schedule}
           </div>
-          <div className="mb-1">8h30 - 12h30</div>
-          <div className="mb-4">13h30 - 18h30</div>
+          <div className="mb-1">{availability.morning}</div>
+          <div className="mb-4">{availability.afternoon}</div>
           <Link
-            href="/contact"
+            href={getLocalizedPath('contact', lang)}
             className="mt-auto underline font-semibold flex items-center gap-1"
           >
-            En savoir plus <span>›</span>
+            {availability.button} <span>›</span>
           </Link>
         </div>
         {/* Carte 2 */}
@@ -93,16 +123,16 @@ export const ParallaxSection = () => {
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="2"/>
             </svg>
           </div>
-          <div className="font-bold text-2xl mb-2">Appelez-nous...</div>
-          <div className="mb-2 text-2xl font-bold">+33 6 43 32 88 74</div>
+          <div className="font-bold text-2xl mb-2">{contact.title}</div>
+          <div className="mb-2 text-2xl font-bold">{contact.phone}</div>
           <div className="mb-4">
-            Pour toute question ou toute demande, n&#39;hésitez pas !
+            {contact.description}
           </div>
           <Link
-            href="/contact"
+            href={getLocalizedPath('contact', lang)}
             className="mt-auto underline font-semibold flex items-center gap-1"
           >
-            Nous contacter <span>›</span>
+            {contact.button} <span>›</span>
           </Link>
         </div>
         {/* Carte 3 */}
@@ -119,11 +149,10 @@ export const ParallaxSection = () => {
             </svg>
           </div>
           <Link
-            href="/contact"
+            href={getLocalizedPath('contact', lang)}
             className="font-bold text-2xl mb-2 text-center cursor-pointer"
           >
-            ...ou envoyez-nous un
-            <br className="hidden md:block" /> e-mail !
+            {email.title}
           </Link>
         </div>
       </div>

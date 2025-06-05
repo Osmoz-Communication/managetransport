@@ -1,27 +1,47 @@
-import { notFound } from "next/navigation"
-import { missions } from "../missionData"
-import { AnimatedMissionDetails } from "@/app/components/AnimatedMissionDetails"
+"use client";
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   params: Promise<{
     slug: string
   }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function MissionPage({ params }: Props) {
-  const { slug } = await params
-  const mission = missions.find((m) => m.slug === slug)
+export default function MissionRedirect({ params }: Props) {
+  const router = useRouter();
 
-  if (!mission) {
-    notFound()
-  }
+  useEffect(() => {
+    const redirectToNewStructure = async () => {
+      const { slug } = await params;
+      
+      // Récupérer la langue préférée ou utiliser français par défaut
+      let preferredLang = 'fr';
+      
+      if (typeof window !== 'undefined') {
+        const storedLang = localStorage.getItem('user-lang');
+        if (storedLang && ['fr', 'en'].includes(storedLang)) {
+          preferredLang = storedLang;
+        } else {
+          const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+          if (['fr', 'en'].includes(browserLang)) {
+            preferredLang = browserLang;
+          }
+        }
+      }
+
+      // Rediriger vers la nouvelle structure
+      const newSlug = preferredLang === 'fr' ? 'nos-missions' : 'our-missions';
+      router.replace(`/${preferredLang}/${newSlug}/${slug}`);
+    };
+
+    redirectToNewStructure();
+  }, [params, router]);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center pb-16">
-      <div className="w-full max-w-5xl mx-auto flex flex-col gap-10 mt-10 px-4">
-        <AnimatedMissionDetails mission={mission} />
-      </div>
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
     </div>
-  )
+  );
 }

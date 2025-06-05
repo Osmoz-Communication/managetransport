@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
+import { getLocalizedPath } from "../locales/routes";
 
 const imageVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -16,7 +21,15 @@ const imageVariants = {
   }),
 };
 
+interface GuaranteeInfo {
+  title: string;
+  description: string;
+}
+
 export const SatisfactionGuarantees = () => {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+
   const images = [
     {
       src: "/images/home/trucks.webp",
@@ -35,6 +48,9 @@ export const SatisfactionGuarantees = () => {
     },
   ];
 
+  const guarantee1 = t("homepage.satisfaction.guarantee1") as unknown as GuaranteeInfo;
+  const guarantee2 = t("homepage.satisfaction.guarantee2") as unknown as GuaranteeInfo;
+
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -44,14 +60,14 @@ export const SatisfactionGuarantees = () => {
             data-aos="fade-up"
             className="text-primary text-base font-semibold mb-2"
           >
-            À propos
+            {t("homepage.satisfaction.badge") as string}
           </h2>
           <h3
             data-aos="fade-up"
             data-aos-delay="100"
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-10"
           >
-            Vos garanties de satisfaction
+            {t("homepage.satisfaction.title") as string}
           </h3>
 
           <div className="flex flex-col gap-8 mb-10">
@@ -64,8 +80,8 @@ export const SatisfactionGuarantees = () => {
                 <Image src="/icons/shield.png" alt="Bouclier" width={48} height={48} style={{filter: 'drop-shadow(0 0 2px #5d6ef8)'}} />
               </span>
               <div>
-                <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">Un responsable transport en temps partagé</div>
-                <div className="text-gray-600 text-base md:text-lg">Vous bénéficierez de tout notre savoir-faire jusqu&apos;à l&apos;aboutissement de votre projet</div>
+                <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">{guarantee1.title}</div>
+                <div className="text-gray-600 text-base md:text-lg">{guarantee1.description}</div>
               </div>
             </div>
 
@@ -78,8 +94,8 @@ export const SatisfactionGuarantees = () => {
                 <Image src="/icons/answer.png" alt="Réponse rapide" width={48} height={48} style={{filter: 'drop-shadow(0 0 2px #58468c)'}} />
               </span>
               <div>
-                <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">Une réponse sous 48 heures</div>
-                <div className="text-gray-600 text-base md:text-lg">Chez Manage Transport, nous faisons le nécessaire pour vous répondre sous 2 jours maximum</div>
+                <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">{guarantee2.title}</div>
+                <div className="text-gray-600 text-base md:text-lg">{guarantee2.description}</div>
               </div>
             </div>
           </div>
@@ -90,10 +106,10 @@ export const SatisfactionGuarantees = () => {
             className="flex justify-center lg:justify-start"
           >
             <Link 
-              href="/contact"
+              href={getLocalizedPath('contact', lang)}
               className="bg-primary text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors text-lg flex items-center gap-2"
             >
-              En savoir plus
+              {t("homepage.satisfaction.button") as string}
               <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

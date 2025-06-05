@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+
 import AOSInitializer from "./components/AOSInitializer";
 import { AlertContainer } from "./components/Alert/Alert";
 import { AlertProvider } from "./providers/AlertProvider";
 import { FontAwesomeSetup } from "./components/FontAwesomeSetup";
+
 import 'aos/dist/aos.css';
 
 const geistSans = Geist({
@@ -40,9 +40,7 @@ export default function RootLayout({
         <FontAwesomeSetup />
         <AlertProvider>
           <AOSInitializer />
-          <Header />
           <main className="min-h-screen bg-white">{children}</main>
-          <Footer />
           <AlertContainer />
         </AlertProvider>
       </body>

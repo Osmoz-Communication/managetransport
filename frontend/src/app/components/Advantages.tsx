@@ -1,29 +1,38 @@
-import { AdvantagesIcon, CalendarIcon, CompassIcon, SearchIcon } from "../icons";
+"use client";
 
-const advantages = [
-  {
-    icon: <AdvantagesIcon className="w-12 h-12 text-primary" />,
-    title: "Expertise",
-    description: "Plus de 30 ans d'expérience dans le secteur du transport",
-  },
-  {
-    icon: <CalendarIcon className="w-12 h-12 text-primary" />,
-    title: "Disponibilité",
-    description: "Présent dès que vous en avez besoin",
-  },
-  {
-    icon: <CompassIcon className="w-12 h-12 text-primary" />,
-    title: "Économique",
-    description: "Un prix juste et adapté à tous vos projets",
-  },
-  {
-    icon: <SearchIcon className="w-12 h-12 text-primary" />,
-    title: "Accompagnement",
-    description: "À vos côtés du début à la fin",
-  },
-];
+import { AdvantagesIcon, CalendarIcon, CompassIcon, SearchIcon } from "../icons";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
+
+interface AdvantageItem {
+  title: string;
+  description: string;
+}
+
+interface BilingualInfo {
+  title: string;
+  description: string;
+}
 
 export const Advantages = () => {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+
+  const icons = [
+    <AdvantagesIcon key="advantages" className="w-12 h-12 text-primary" />,
+    <CalendarIcon key="calendar" className="w-12 h-12 text-primary" />,
+    <CompassIcon key="compass" className="w-12 h-12 text-primary" />,
+    <SearchIcon key="search" className="w-12 h-12 text-primary" />
+  ];
+
+  const advantages = (t("homepage.advantages.items") as unknown as AdvantageItem[]).map((item, index) => ({
+    icon: icons[index],
+    title: item.title,
+    description: item.description,
+  }));
+
+  const bilingual = t("homepage.advantages.bilingual") as unknown as BilingualInfo;
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -32,10 +41,10 @@ export const Advantages = () => {
           className="text-center mb-12"
         >
           <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-2">
-            POURQUOI NOUS ?
+            {t("homepage.advantages.badge") as string}
           </h2>
           <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Nos avantages
+            {t("homepage.advantages.title") as string}
           </h3>
         </div>
 
@@ -75,9 +84,9 @@ export const Advantages = () => {
               </svg>
             </span>
             <div className="text-left">
-              <h4 className="font-semibold">English speaker</h4>
+              <h4 className="font-semibold">{bilingual.title}</h4>
               <p className="text-sm text-gray-600">
-                Profitez d&apos;une expérience entièrement bilingue pour vos missions
+                {bilingual.description}
               </p>
             </div>
           </div>

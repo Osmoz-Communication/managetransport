@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { useTranslation } from "../../hooks/useTranslation";
 import { usePathname } from "next/navigation";
+import { getLocalizedPath, type Language } from "../../locales/routes";
 
-const navKeys = [
-  { href: "/", key: "nav.home" },
-  { href: "/nos-missions", key: "nav.missions" },
-  { href: "/nos-valeurs", key: "nav.valeurs" },
-  { href: "/qui-sommes-nous", key: "nav.equipe" },
-  { href: "/contact", key: "nav.contact" },
+const navRoutes = [
+  { route: "home" as const, key: "nav.home" },
+  { route: "missions" as const, key: "nav.missions" },
+  { route: "values" as const, key: "nav.valeurs" },
+  { route: "about" as const, key: "nav.equipe" },
+  { route: "contact" as const, key: "nav.contact" },
 ];
 
 export default function Nav({ lang }: { lang: 'fr' | 'en' }) {
@@ -17,10 +18,11 @@ export default function Nav({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <nav aria-label={lang === 'fr' ? "Navigation principale" : "Main navigation"}>
       <ul className="flex flex-col md:flex-row gap-4 md:gap-8 list-none m-0 p-0">
-        {navKeys.map(({ href, key }) => {
+        {navRoutes.map(({ route, key }) => {
+          const href = getLocalizedPath(route, lang as Language);
           const isActive = pathname === href;
           return (
-            <li key={href} className="text-center md:text-left">
+            <li key={route} className="text-center md:text-left">
               <Link 
                 href={href} 
                 className={`
@@ -31,7 +33,7 @@ export default function Nav({ lang }: { lang: 'fr' | 'en' }) {
                 `}
                 aria-current={isActive ? 'page' : undefined}
               >
-                {t(key)}
+                {t(key) as string}
               </Link>
             </li>
           );
