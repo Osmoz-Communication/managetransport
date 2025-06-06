@@ -101,9 +101,9 @@ export function useOptimizedIntersectionObserver(
 
   // Nettoyage lors du démontage
   useEffect(() => {
+    const currentElements = elementsRef.current;
     return () => {
       const currentObserver = observerRef.current;
-      const currentElements = elementsRef.current;
       
       if (currentObserver) {
         currentObserver.disconnect();

@@ -61,7 +61,7 @@ export default function AboutPage() {
                     />
                     <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-lg">
                       <Image
-                        src="/logo.png"
+                        src="/cropped-arbre-de-vie-192x192.png"
                         alt="Logo Manage Transport"
                         width={50}
                         height={50}

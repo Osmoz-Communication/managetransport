@@ -260,7 +260,7 @@ export default function ContactPage() {
               <div className="lg:w-3/5 p-10 relative">
                 <div className="absolute top-6 right-6">
                   <Image
-                    src="/logo.png"
+                    src="/cropped-arbre-de-vie-192x192.png"
                     alt="Logo Manage Transport"
                     width={50}
                     height={50}
