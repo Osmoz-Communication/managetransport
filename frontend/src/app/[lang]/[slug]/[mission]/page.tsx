@@ -1,11 +1,20 @@
 import { notFound } from 'next/navigation';
 import { languages, type Language } from '../../../locales/routes';
-import { AnimatedMissionDetails } from '../../../components/AnimatedMissionDetails';
-import { missions } from '../../../nos-missions/missionData';
+import { AnimatedMissionDetails } from '../../../components/features/missions';
 import { getMissionKeyFromSlug } from '../../../locales/missionSlugs';
 
 interface Props {
   params: Promise<{ lang: string; slug: string; mission: string }>;
+}
+
+interface MissionData {
+  title: string;
+  short: string;
+  intro: string;
+  details: string[];
+  image: string;
+  more?: string;
+  slug: string;
 }
 
 export async function generateStaticParams() {
@@ -51,8 +60,12 @@ export default async function MissionPage({ params }: Props) {
     notFound();
   }
 
+  // Charger les traductions pour obtenir les données de mission
+  const translations = await import(`../../../locales/${lang}.ts`);
+  const missions = translations.default.missionsPage.missions;
+  
   // Trouver la mission correspondante par sa clé française (slug original)
-  const mission = missions.find((m) => m.slug === missionKey);
+  const mission = missions.find((m: MissionData) => m.slug === missionKey);
   
   if (!mission) {
     notFound();

@@ -15,7 +15,7 @@ const fr = {
     successMessage: "Votre message a été envoyé avec succès ! Nous vous recontacterons bientôt.",
     errorMessage: "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
     badge: "Contactez-nous",
-    title: "Nous Contacter",
+    title: "Nous Rencontrer",
     description: "Prenez contact avec nous afin de pouvoir nous rencontrer et discuter de votre projet transport",
     formTitle: "Formulaire de Contact",
     formHeading: "Commençons le dialogue",

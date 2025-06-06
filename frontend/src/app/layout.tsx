@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import AOSInitializer from "./components/AOSInitializer";
-import { AlertContainer } from "./components/Alert/Alert";
+import AOSInitializer from "./components/setup/aos-initializer";
+import { AlertContainer } from "./components/ui/alert/Alert";
 import { AlertProvider } from "./providers/AlertProvider";
-import { FontAwesomeSetup } from "./components/FontAwesomeSetup";
+import { FontAwesomeSetup } from "./components/setup/font-awesome-setup";
 
 import 'aos/dist/aos.css';
 

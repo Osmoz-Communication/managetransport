@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import { getRouteFromSlug, languages, type Language } from '../../locales/routes';
 
 // Import des composants de pages
-import ContactPage from '../../components/ContactPage';
-import MissionsPage from '../../components/MissionsPage';
-import ValuesPage from '../../components/ValuesPage';
-import AboutPage from '../../components/AboutPage';
+import { ContactPage } from '../../(pages)/contact';
+import { MissionsPage } from '../../(pages)/missions';
+import { ValuesPage } from '../../(pages)/values';
+import { AboutPage } from '../../(pages)/about';
 
 interface Props {
   params: Promise<{ lang: string; slug: string }>;

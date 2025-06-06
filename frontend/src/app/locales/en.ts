@@ -15,7 +15,7 @@ const en = {
     successMessage: "Your message has been sent successfully! We will contact you soon.",
     errorMessage: "An error occurred while sending. Please try again.",
     badge: "Contact Us",
-    title: "Contact Us",
+    title: "Let's meet",
     description: "Get in touch with us to meet and discuss your transport project",
     formTitle: "Contact Form",
     formHeading: "Let's start the dialogue",

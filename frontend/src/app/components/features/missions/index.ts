@@ -1,0 +1,1 @@
+export { AnimatedMissionDetails } from './animated-mission-details'; 

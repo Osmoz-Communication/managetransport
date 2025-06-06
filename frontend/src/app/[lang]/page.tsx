@@ -1,12 +1,14 @@
 "use client";
 
 import 'aos/dist/aos.css';
-import { Slider } from "../components/Slider";
-import { Advantages } from "../components/Advantages";
-import { SatisfactionGuarantees } from "../components/SatisfactionGuarantees";
-import { ParallaxSection } from "../components/ParallaxSection";
-import { MissionsSection } from "../components/MissionsSection";
-import { CTASection } from "../components/CTASection";
+import { 
+  Slider, 
+  Advantages, 
+  SatisfactionGuarantees, 
+  ParallaxSection, 
+  MissionsSection 
+} from "../components/features/homepage";
+import { CTASection } from "../components/ui/cta-section";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
 
