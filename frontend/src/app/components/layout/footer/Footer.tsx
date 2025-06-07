@@ -135,9 +135,15 @@ export default function Footer() {
             role="list"
             aria-label="Liens vers nos réseaux sociaux"
           >
-            <SocialIcon brand="facebook" variant="footer" />
-            <SocialIcon brand="linkedin" variant="footer" />
-            <SocialIcon brand="instagram" variant="footer" />
+            <div role="listitem">
+              <SocialIcon brand="facebook" variant="footer" />
+            </div>
+            <div role="listitem">
+              <SocialIcon brand="linkedin" variant="footer" />
+            </div>
+            <div role="listitem">
+              <SocialIcon brand="instagram" variant="footer" />
+            </div>
           </div>
         </div>
       </div>

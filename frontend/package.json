@@ -34,13 +34,25 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "babel-plugin-import": "^1.13.8",
-    "babel-plugin-transform-remove-console": "^6.9.4",
-    "babel-plugin-transform-remove-debugger": "^6.9.4",
-    "core-js": "^3.42.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "chrome >= 88",
+      "firefox >= 85",
+      "safari >= 14",
+      "edge >= 88"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

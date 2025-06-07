@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { languages, type Language } from '../locales/routes';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import Header from '../components/layout/header/Header';
+import HeaderPortal from '../components/layout/header/HeaderPortal';
+import MainContent from '../components/layout/MainContent';
 import Footer from '../components/layout/footer/Footer';
 
 interface Props {
@@ -69,8 +71,12 @@ export default async function LangLayout({ children, params }: Props) {
 
   return (
     <LanguageProvider initialLang={lang as Language}>
-      <Header />
-      {children}
+      <HeaderPortal>
+        <Header />
+      </HeaderPortal>
+      <MainContent>
+        {children}
+      </MainContent>
       <Footer />
     </LanguageProvider>
   );

@@ -92,7 +92,7 @@ export default function RootLayout({
             *{box-sizing:border-box}
             html{font-family:'Geist Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
             body{margin:0;padding:0;background-color:#fff;color:#1f2937}
-            .header-critical{position:fixed;top:0;left:0;right:0;z-index:50;background-color:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;height:80px}
+            .header-critical{position:sticky;top:0;left:0;right:0;z-index:50;background-color:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;height:80px}
             .nav-critical{display:flex;justify-content:space-between;align-items:center;padding:0 1rem;max-width:1200px;margin:0 auto;height:100%}
             .logo-critical{font-size:1.5rem;font-weight:700;color:#1f2937;text-decoration:none}
             .hero-critical{min-height:100vh;padding-top:80px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center}
@@ -168,9 +168,7 @@ export default function RootLayout({
         <BfcacheOptimizer />
         <AlertProvider>
           <AOSInitializer />
-          <main id="main-content" className="min-h-screen bg-white" role="main" tabIndex={-1}>
-            {children}
-          </main>
+          {children}
           <AlertContainer />
         </AlertProvider>
       </body>

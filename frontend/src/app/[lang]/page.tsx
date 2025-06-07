@@ -58,7 +58,7 @@ export default function HomePage() {
   }));
 
   return (
-    <div className="min-h-screen bg-white flex flex-col relative">
+    <div className="bg-white flex flex-col relative">
       {/* Composants critiques chargés immédiatement */}
       <div data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-bottom">
         <Slider slides={slides} />

@@ -6,9 +6,10 @@ import { useLanguage } from "../../../contexts/LanguageContext";
 
 type LogoProps = {
   className?: string;
+  style?: React.CSSProperties;
 };
 
-export default function Logo({ className }: LogoProps) {
+export default function Logo({ className, style }: LogoProps) {
   const { lang } = useLanguage();
   
   return (
@@ -18,9 +19,14 @@ export default function Logo({ className }: LogoProps) {
         alt="Logo Manage Transport"
         width={250}
         height={100}
-        className={`${className} transition-all duration-300`}
+        className={className}
+        style={{
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          ...style
+        }}
         priority
-        unoptimized
+        sizes="(max-width: 768px) 150px, 250px"
+        quality={90}
       />
     </Link>
   );

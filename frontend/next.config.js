@@ -19,8 +19,6 @@ const nextConfig = {
     appDocumentPreloading: true,
     // Optimisation CSS (désactivée pour éviter l'erreur critters)
     // optimizeCss: true,
-    // Tree-shaking amélioré
-    // serverComponentsExternalPackages: [], // Déplacé vers serverExternalPackages
   },
   // Configuration Turbopack (stable)
   turbopack: {

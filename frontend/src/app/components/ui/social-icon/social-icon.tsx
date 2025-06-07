@@ -53,7 +53,6 @@ export function SocialIcon({ brand, className = "", variant = 'default' }: Socia
       aria-label={ariaLabel}
       className={`inline-flex items-center justify-center text-xl transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none rounded ${color} ${variantStyle} ${className}`}
       title={label}
-      role="link"
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -66,8 +65,6 @@ export function SocialIcon({ brand, className = "", variant = 'default' }: Socia
         icon={icon} 
         className="[&>svg]:bg-transparent [&>svg]:hover:bg-transparent"
         aria-hidden="true"
-        role="img"
-        title=""
       />
       <span className="sr-only">{ariaLabel}</span>
     </a>
