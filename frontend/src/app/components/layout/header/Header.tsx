@@ -100,7 +100,7 @@ export default function Header() {
           backgroundColor: 'white'
         }}
       >
-        <div className="flex items-center justify-between w-full px-4 sm:px-6 py-3 md:py-4 max-w-screen h-full">
+        <div className="flex items-center justify-between w-full px-4 sm:px-6 py-6 md:py-8 max-w-screen h-full">
           <div className="flex items-center flex-shrink-0">
             <Logo className="w-[150px] md:w-[250px]" />
           </div>
@@ -157,11 +157,11 @@ export default function Header() {
   const isScrolled = scrollProgress > 0.1;
   
   // Interpolation fluide des valeurs (0 = état normal, 1 = état scrollé)
-  // py-3 = 12px mobile, py-4 = 16px desktop → réduit à 8px/12px quand scrollé
+  // py-6 = 24px mobile, py-8 = 32px desktop → réduit à 16px/20px quand scrollé
   const isDesktop = windowWidth >= 768;
   const paddingY = isDesktop 
-    ? 16 - (4 * scrollProgress) // 16px -> 12px (desktop)
-    : 12 - (4 * scrollProgress); // 12px -> 8px (mobile)
+    ? 32 - (12 * scrollProgress) // 32px -> 20px (desktop)
+    : 24 - (8 * scrollProgress); // 24px -> 16px (mobile)
   const logoScale = 1 - (0.2 * scrollProgress); // 1 -> 0.8
   const navScale = 1 - (0.1 * scrollProgress); // 1 -> 0.9
 
