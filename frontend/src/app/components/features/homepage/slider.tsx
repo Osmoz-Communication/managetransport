@@ -20,9 +20,6 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
   
-  // Debug temporaire
-  console.log("Slider component received slides:", slides);
-  
   // Assurer qu'on a toujours un array pour éviter les erreurs de hook
   const safeSlides = slides || [];
   

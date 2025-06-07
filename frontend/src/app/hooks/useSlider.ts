@@ -14,14 +14,9 @@ export const useSlider = ({ itemsCount, slidesPerView, autoPlayInterval }: UseSl
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Calculate the maximum index the slider can go to.
-  // If itemsCount is 5 and slidesPerView is 3, maxIndex is 2 (0, 1, 2).
-  // If itemsCount is 3 and slidesPerView is 3, maxIndex is 0.
-  // If itemsCount is 2 and slidesPerView is 3, maxIndex is 0.
   const maxIndex = Math.max(0, itemsCount - slidesPerView);
 
   const goToSlide = useCallback((index: number) => {
-    // Ensure the index is within valid bounds (0 to maxIndex)
     setCurrentIndex(Math.min(Math.max(0, index), maxIndex));
   }, [maxIndex]);
 
