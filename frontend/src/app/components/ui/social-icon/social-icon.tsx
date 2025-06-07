@@ -1,11 +1,7 @@
 "use client";
 
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
-
-// Add icons to the library so they can be used by name
-library.add(faFacebookF, faLinkedinIn, faInstagram);
+import { faFacebookF, faLinkedinIn, faInstagram } from '../../setup/fontawesome-optimized';
 
 type SocialBrand = 'facebook' | 'linkedin' | 'instagram';
 

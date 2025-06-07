@@ -5,10 +5,11 @@ import "./globals.css";
 import AOSInitializer from "./components/setup/aos-initializer";
 import { AlertContainer } from "./components/ui/alert/Alert";
 import { AlertProvider } from "./providers/AlertProvider";
-import { FontAwesomeSetup } from "./components/setup/font-awesome-setup";
+import { FontAwesomeOptimized } from "./components/setup/fontawesome-optimized";
+import { BfcacheOptimizer } from "./components/setup/bfcache-optimizer";
 import { SkipLink } from "./components/ui/skip-link";
 
-import 'aos/dist/aos.css';
+import 'aos/dist/aos.css'; // CSS AOS nécessaire pour les animations
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -163,7 +164,8 @@ export default function RootLayout({
         <SkipLink href="#main-navigation">Aller à la navigation</SkipLink>
         <SkipLink href="#footer">Aller au pied de page</SkipLink>
         
-        <FontAwesomeSetup />
+        <FontAwesomeOptimized />
+        <BfcacheOptimizer />
         <AlertProvider>
           <AOSInitializer />
           <main id="main-content" className="min-h-screen bg-white" role="main" tabIndex={-1}>

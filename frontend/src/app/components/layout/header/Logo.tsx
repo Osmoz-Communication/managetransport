@@ -14,7 +14,7 @@ export default function Logo({ className }: LogoProps) {
   return (
     <Link href={`/${lang}`} aria-label="Accueil Manage Transport" className="block">
       <Image
-        src="/logo_managetransport.png"
+        src="/logo_managetransport.webp"
         alt="Logo Manage Transport"
         width={250}
         height={100}

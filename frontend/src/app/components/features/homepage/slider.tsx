@@ -20,6 +20,12 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
   
+  // Debug temporaire
+  console.log("Slider component received slides:", slides);
+  
+  // Assurer qu'on a toujours un array pour éviter les erreurs de hook
+  const safeSlides = slides || [];
+  
   const {
     currentIndex: currentSlide,
     nextSlide: goToNextSlide,
@@ -34,10 +40,23 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
     handleMouseLeave,
     isDragging,
   } = useSlider({
-    itemsCount: slides.length,
+    itemsCount: safeSlides.length,
     slidesPerView: 1,
     autoPlayInterval: SLIDER_INTERVAL,
   });
+  
+  // Vérification de sécurité après l'appel du hook
+  if (!slides || slides.length === 0) {
+    console.warn("No slides provided to Slider component");
+    return (
+      <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] bg-gray-200 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-600 mb-2">Slider en cours de chargement...</h2>
+          <p className="text-gray-500">Les données du slider sont en cours de récupération.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative group">
@@ -77,16 +96,12 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50" style={{ zIndex: 2 }}></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center px-4" style={{ zIndex: 10 }}>
               <h1 
-                data-aos="fade-down"
-                data-aos-delay="200"
                 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 text-white text-center"
                 style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}
               >
                 {slide.title}
               </h1>
               <p 
-                data-aos="fade-up"
-                data-aos-delay="400"
                 className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-8 max-w-3xl mx-auto text-white text-center"
                 style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}
               >
@@ -94,8 +109,6 @@ export const Slider: React.FC<SliderProps> = ({ slides }) => {
               </p>
               <Link
                 href={getLocalizedPath('missions', lang)}
-                data-aos="zoom-in"
-                data-aos-delay="600"
                 className="bg-primary hover:bg-primary/90 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition duration-300 shadow-lg"
               >
                 {t("homepage.slider.button") as string}
