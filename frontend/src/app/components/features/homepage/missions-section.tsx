@@ -8,7 +8,6 @@ import { useTranslation } from "../../../hooks/useTranslation";
 import { useOptimizedIntersectionObserver } from "../../../hooks/useOptimizedIntersectionObserver";
 import { getLocalizedPath } from "../../../locales/routes";
 import { getLocalizedMissionSlug, type MissionKey } from "../../../locales/missionSlugs";
-import "../../../styles/missions-optimized.css";
 
 interface Mission {
   slug: string;

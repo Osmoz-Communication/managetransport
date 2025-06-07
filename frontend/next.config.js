@@ -5,6 +5,15 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerCompiles: true,
   },
+  // Configuration Turbopack (stable)
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -73,41 +82,8 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, { dev, isServer }) => {
-    // Optimisations webpack
-    if (!dev && !isServer) {
-      // Tree shaking plus agressif
-      config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
-      
-      // Optimisation des chunks
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-            priority: 10,
-          },
-          animations: {
-            test: /[\\/]node_modules[\\/](framer-motion|aos)[\\/]/,
-            name: 'animations',
-            chunks: 'all',
-            priority: 20,
-          },
-          icons: {
-            test: /[\\/]node_modules[\\/]@fortawesome[\\/]/,
-            name: 'icons',
-            chunks: 'all',
-            priority: 20,
-          },
-        },
-      };
-    }
-    
-    return config;
-  },
+  // Configuration Webpack supprimée car Turbopack gère l'optimisation automatiquement
+  // Turbopack offre de meilleures performances sans configuration manuelle
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,

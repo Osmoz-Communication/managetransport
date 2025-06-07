@@ -1,6 +1,6 @@
 import {useContext, useCallback, useRef} from 'react'
 import {AlertContext, AlertType} from '../contexts/AlertContext'
-import {DEFAULT_ALERT_DURATION} from '@/constants'
+import {DEFAULT_ALERT_DURATION} from '../../constants'
 
 export const useAlerts = () => {
   const context = useContext(AlertContext)

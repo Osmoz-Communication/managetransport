@@ -77,7 +77,13 @@ export const SatisfactionGuarantees = () => {
               className="flex items-center text-left gap-4"
             >
               <span className="flex-shrink-0">
-                <Image src="/icons/shield.png" alt="Bouclier" width={48} height={48} style={{filter: 'drop-shadow(0 0 2px #5d6ef8)'}} />
+                <Image 
+                  src="/icons/shield.png" 
+                  alt="Bouclier" 
+                  width={48} 
+                  height={48} 
+                  style={{filter: 'drop-shadow(0 0 2px #5d6ef8)', width: 'auto', height: 'auto'}} 
+                />
               </span>
               <div>
                 <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">{guarantee1.title}</div>
@@ -91,7 +97,13 @@ export const SatisfactionGuarantees = () => {
               className="flex items-center text-left gap-4"
             >
               <span className="flex-shrink-0">
-                <Image src="/icons/answer.png" alt="Réponse rapide" width={48} height={48} style={{filter: 'drop-shadow(0 0 2px #58468c)'}} />
+                <Image 
+                  src="/icons/answer.png" 
+                  alt="Réponse rapide" 
+                  width={48} 
+                  height={48} 
+                  style={{filter: 'drop-shadow(0 0 2px #58468c)', width: 'auto', height: 'auto'}} 
+                />
               </span>
               <div>
                 <div className="font-bold text-2xl md:text-3xl text-gray-900 mb-1">{guarantee2.title}</div>
@@ -132,7 +144,13 @@ export const SatisfactionGuarantees = () => {
               viewport={{ once: true }}
               custom={i}
             >
-              <Image src={img.src} alt={img.alt} fill className="object-cover" />
+              <Image 
+                src={img.src} 
+                alt={img.alt} 
+                fill 
+                className="object-cover" 
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </motion.div>
           ))}
         </div>

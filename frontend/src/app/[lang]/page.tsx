@@ -30,7 +30,7 @@ export default function HomePage() {
   }));
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col relative">
       <div data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-offset="0" data-aos-anchor-placement="top-bottom">
         <Slider slides={slides} />
       </div>
@@ -40,7 +40,7 @@ export default function HomePage() {
       <div data-aos="fade-up" data-aos-once="true" data-aos-duration="600" data-aos-delay="150" data-aos-offset="50" data-aos-anchor-placement="top-bottom">
         <SatisfactionGuarantees />
       </div>
-      <div data-aos="zoom-in" data-aos-once="true" data-aos-duration="600" data-aos-delay="200" data-aos-offset="50" data-aos-anchor-placement="center-bottom">
+      <div data-aos="zoom-in" data-aos-once="true" data-aos-duration="600" data-aos-delay="200" data-aos-offset="50" data-aos-anchor-placement="center-bottom" className="relative">
         <ParallaxSection />
       </div>
       <div data-aos="fade-up" data-aos-once="true" data-aos-duration="600" data-aos-delay="250" data-aos-offset="50" data-aos-anchor-placement="top-bottom">

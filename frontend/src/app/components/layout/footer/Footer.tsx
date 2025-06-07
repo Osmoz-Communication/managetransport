@@ -56,7 +56,7 @@ export default function Footer() {
             <li>
               <Link 
                 href={`/${lang}`} 
-                className="text-gray-900 hover:text-primary focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 transition-colors"
+                className="text-gray-900 hover:text-primary focus:outline-none rounded px-2 py-1 transition-colors"
                 aria-label={`${t("footer.links.home") as string} - Page d'accueil`}
               >
                 {t("footer.links.home") as string}
@@ -65,7 +65,7 @@ export default function Footer() {
             <li>
               <Link 
                 href={getLocalizedPath('missions', lang)} 
-                className="text-gray-900 hover:text-primary focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 transition-colors"
+                className="text-gray-900 hover:text-primary focus:outline-none rounded px-2 py-1 transition-colors"
                 aria-label={`${t("footer.links.missions") as string} - Nos services`}
               >
                 {t("footer.links.missions") as string}
@@ -74,7 +74,7 @@ export default function Footer() {
             <li>
               <Link 
                 href={getLocalizedPath('values', lang)} 
-                className="text-gray-900 hover:text-primary focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 transition-colors"
+                className="text-gray-900 hover:text-primary focus:outline-none rounded px-2 py-1 transition-colors"
                 aria-label={`${t("footer.links.values") as string} - Nos valeurs`}
               >
                 {t("footer.links.values") as string}
@@ -83,7 +83,7 @@ export default function Footer() {
             <li>
               <Link 
                 href={getLocalizedPath('about', lang)} 
-                className="text-gray-900 hover:text-primary focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 transition-colors"
+                className="text-gray-900 hover:text-primary focus:outline-none rounded px-2 py-1 transition-colors"
                 aria-label={`${t("footer.links.about") as string} - À propos de nous`}
               >
                 {t("footer.links.about") as string}
@@ -92,7 +92,7 @@ export default function Footer() {
             <li>
               <Link 
                 href={getLocalizedPath('contact', lang)} 
-                className="text-gray-900 hover:text-primary focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 transition-colors"
+                className="text-gray-900 hover:text-primary focus:outline-none rounded px-2 py-1 transition-colors"
                 aria-label={`${t("footer.links.contact") as string} - Nous contacter`}
               >
                 {t("footer.links.contact") as string}

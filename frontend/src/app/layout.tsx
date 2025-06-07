@@ -84,15 +84,25 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/cropped-arbre-de-vie-32x32.png" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/cropped-arbre-de-vie-180x180.png" />
-        <link rel="preload" href="/fonts/geist-sans.woff2" as="font" type="font/woff2" crossOrigin="" />
-        <link rel="preload" href="/fonts/geist-mono.woff2" as="font" type="font/woff2" crossOrigin="" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preload" href="/styles/critical.css" as="style" />
+
         <style dangerouslySetInnerHTML={{
           __html: `
             /* Critical CSS inline pour le premier affichage */
-            *{box-sizing:border-box}html{font-family:'Geist Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{margin:0;padding:0;background-color:#fff;color:#1f2937}.header-critical{position:fixed;top:0;left:0;right:0;z-index:50;background-color:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;height:80px}.nav-critical{display:flex;justify-content:space-between;align-items:center;padding:0 1rem;max-width:1200px;margin:0 auto;height:100%}.logo-critical{font-size:1.5rem;font-weight:700;color:#1f2937;text-decoration:none}.hero-critical{min-height:100vh;padding-top:80px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center}.hero-content-critical{max-width:42rem;padding:0 1rem}.hero-title-critical{font-size:2.25rem;line-height:1.2;font-weight:800;margin-bottom:1.5rem}.hero-description-critical{font-size:1.125rem;line-height:1.7;opacity:.9;margin-bottom:2rem}.cta-button-critical{display:inline-block;background-color:#f59e0b;color:white;padding:.75rem 2rem;border-radius:.5rem;text-decoration:none;font-weight:600;transition:all .2s ease;border:none;cursor:pointer}.cta-button-critical:hover{background-color:#d97706;transform:translateY(-1px)}@media (max-width:768px){.hero-title-critical{font-size:1.875rem}.hero-description-critical{font-size:1rem}.nav-critical{padding:0 .5rem}}
+            *{box-sizing:border-box}
+            html{font-family:'Geist Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+            body{margin:0;padding:0;background-color:#fff;color:#1f2937}
+            .header-critical{position:fixed;top:0;left:0;right:0;z-index:50;background-color:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;height:80px}
+            .nav-critical{display:flex;justify-content:space-between;align-items:center;padding:0 1rem;max-width:1200px;margin:0 auto;height:100%}
+            .logo-critical{font-size:1.5rem;font-weight:700;color:#1f2937;text-decoration:none}
+            .hero-critical{min-height:100vh;padding-top:80px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center}
+            .hero-content-critical{max-width:42rem;padding:0 1rem}
+            .hero-title-critical{font-size:2.25rem;line-height:1.2;font-weight:800;margin-bottom:1.5rem}
+            .hero-description-critical{font-size:1.125rem;line-height:1.7;opacity:.9;margin-bottom:2rem}
+            .cta-button-critical{display:inline-block;background-color:#f59e0b;color:white;padding:.75rem 2rem;border-radius:.5rem;text-decoration:none;font-weight:600;transition:all .2s ease;border:none;cursor:pointer}
+            .cta-button-critical:hover{background-color:#d97706;transform:translateY(-1px)}
+            .skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:loading 1.5s infinite}
+            @keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+            @media (max-width:768px){.hero-title-critical{font-size:1.875rem}.hero-description-critical{font-size:1rem}.nav-critical{padding:0 .5rem}}
           `
         }} />
         <script
