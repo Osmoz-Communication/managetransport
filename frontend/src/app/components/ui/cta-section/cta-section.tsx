@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useLanguage } from "../../../contexts/LanguageContext";
 import { useTranslation } from "../../../hooks/useTranslation";
+import { getLocalizedPath } from "../../../locales/routes";
 
 interface CTASectionProps {
   title?: string;
@@ -18,7 +19,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   title: titleProp,
   description: descriptionProp,
   primaryButtonText: primaryButtonTextProp,
-  primaryButtonHref = "/contact",
+  primaryButtonHref,
   secondaryButtonText: secondaryButtonTextProp,
   secondaryButtonHref: secondaryButtonHrefProp,
   badge: badgeProp,
@@ -31,8 +32,11 @@ export const CTASection: React.FC<CTASectionProps> = ({
   const description = descriptionProp ?? t('cta.default.description');
   const primaryButtonText = primaryButtonTextProp ?? t('cta.default.primaryButton');
   const secondaryButtonText = secondaryButtonTextProp ?? t('cta.default.secondaryButton');
-  const secondaryButtonHref = secondaryButtonHrefProp ?? '/nos-missions';
   const badge = badgeProp ?? t('cta.default.badge');
+
+  // Utilisation de getLocalizedPath pour les routes officielles
+  const primaryHref = primaryButtonHref ?? getLocalizedPath('contact', lang);
+  const secondaryHref = secondaryButtonHrefProp ?? getLocalizedPath('missions', lang);
 
   return (
     <section className={`py-20 bg-gray-50 ${className}`}>
@@ -75,8 +79,8 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 data-aos-delay="400"
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
-                <a 
-                  href={primaryButtonHref}
+                <Link 
+                  href={primaryHref}
                   className="group relative inline-flex items-center px-8 py-3 bg-primary text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 overflow-hidden"
                 >
                   <span className="relative z-10">{primaryButtonText as string}</span>
@@ -89,11 +93,11 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   
                   {/* Effet de pulse subtil */}
                   <div className="absolute inset-0 bg-primary/20 rounded-lg opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
-                </a>
+                </Link>
                 
-                {secondaryButtonHref && secondaryButtonText && (
+                {secondaryButtonText && (
                   <Link 
-                    href={secondaryButtonHref}
+                    href={secondaryHref}
                     className="group inline-flex items-center px-8 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
                   >
                     <span>{secondaryButtonText as string}</span>
